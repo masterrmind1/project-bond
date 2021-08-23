@@ -1,0 +1,40 @@
+<button class="logout-button" *ngIf="authentication" mat-raised-button color="warn" (click)="logout()">Logout</button>
+<div class="center-content">
+    <mat-card class="logout-card" *ngIf="authentication">
+        <mat-card-content>
+            <h2> Hello! <b *ngIf="user!=null"> {{name}}</b> <span *ngIf="!user.displayName"> {{email}}</span> </h2>
+        </mat-card-content>
+    </mat-card>
+    <div class="login-wrapper">
+
+
+        <mat-card class="box" *ngIf="!authentication">
+            <mat-card-header>
+                <mat-card-title>Please Login First!</mat-card-title>
+            </mat-card-header>
+
+            <form *ngIf="!authentication">
+                <mat-card-content>
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="text" name="email" placeholder="Email" [(ngModel)]="email">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="text" name="password" placeholder="Password" [(ngModel)]="password">
+                    </mat-form-field>
+                </mat-card-content>
+                <button (click)="loggedIn()" mat-stroked-button color="accent" class="btn-block">Log in</button>
+
+                <div>
+                    <a class="btn btn-outline-dark" (click)="googleLogin()" role="button" style="width: 100%; margin-top: 10px;padding: 12px;">
+                        <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" /> Login with Google
+                    </a>
+                    <br>
+                    <button (click)="facebookLogin()" mat-raised-button color="primary" style="width:100%;height: 50px;margin-top: 4%;">Login with Facebook</button>
+                </div>
+            </form>
+        </mat-card>
+
+    </div>
+
+</div>

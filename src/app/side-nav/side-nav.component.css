@@ -1,0 +1,357 @@
+#list {
+    border-radius: 10px;
+    height: 100%;
+    background: transparent;
+    padding: 0% !important;
+    position: absolute;
+    left: 5%;
+}
+
+#bottom-nav {
+    position: absolute;
+    bottom: 0;
+    background-color: var(--violet);
+    height: 8%;
+}
+
+#list .menu-open {
+    position: absolute;
+    left: 0%;
+    border-radius: 10px;
+}
+
+#list .menu-close {
+    position: absolute;
+    left: 2%;
+    border-radius: 10px;
+}
+
+#sidenav.menu-close {
+    width: 6%;
+    background-color: var(--light-violet);
+    font-size: 15px;
+    overflow: hidden;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    left: 0;
+    margin-top: 0% !important;
+    padding: 0% !important;
+}
+
+#sidenav.menu-open {
+    width: 19%;
+    align-items: center;
+    background-color: var(--light-violet);
+    position: absolute;
+    margin-left: 0%;
+    margin-top: 0% !important;
+    align-items: left !important;
+    font-weight: bold;
+}
+
+#my-app {
+    position: absolute;
+    top: 2%;
+    margin-left: 9%;
+    font-size: 120%;
+}
+
+ ::ng-deep .mat-tooltip {
+    font-size: 130%;
+}
+
+
+/* #mat-toolbar .main-toolbar {
+    position: absolute;
+    top: 0;
+    height: 40% !important;
+    z-index: 0;
+    background-color: tomato;
+} */
+
+@media screen and (min-width: 300px) and (max-width: 399px) {
+    .sidenavContainer {
+        margin-top: 12% !important;
+        overflow: hidden;
+        height: calc(100%-12%);
+        overflow: hidden;
+    }
+    #my-app {
+        position: absolute;
+        top: 2%;
+        margin-left: 24%;
+        font-size: 140%;
+    }
+    #sidenav.menu-open {
+        width: 30%;
+        align-items: center;
+        background-color: var(--light-violet);
+        position: absolute;
+        margin-left: 0%;
+        margin-top: 0% !important;
+        align-items: left !important;
+    }
+}
+
+@media screen and (min-width: 150px) and (max-width: 299px) {
+    #my-app {
+        position: absolute;
+        top: 2%;
+        margin-left: 25%;
+        font-size: 140%;
+    }
+    .sidenavContainer {
+        margin-top: 9% !important;
+        overflow: hidden;
+        height: calc(100%-9%);
+        overflow: hidden;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 580px) {
+    .sidenavContainer {
+        margin-top: 9% !important;
+        overflow: hidden;
+        height: calc(100%-9%);
+        overflow: hidden;
+    }
+    #my-app {
+        position: absolute;
+        top: 1%;
+        margin-left: 20%;
+        font-size: 140%;
+    }
+    #sidenav.menu-open {
+        width: 30%;
+    }
+    #toolbar-menu {
+        position: absolute;
+        top: 1.5% !important;
+    }
+}
+
+@media screen and (min-width: 581px) and (max-width: 900px) {
+    .sidenavContainer {
+        margin-top: 8% !important;
+        overflow: hidden;
+        height: calc(100%-8%);
+        overflow: hidden;
+    }
+    #sidenav.menu-open {
+        width: 30%;
+        align-items: center;
+        background-color: var(--light-violet);
+        position: absolute;
+        margin-left: 0%;
+        margin-top: 0% !important;
+    }
+    #my-app {
+        position: absolute;
+        top: 2%;
+        margin-left: 9%;
+        font-size: 140%;
+    }
+    #sidenav.menu-close {
+        width: 8%;
+        background-color: var(--light-violet);
+        font-size: 15px;
+        font-weight: bold;
+        overflow: hidden;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        margin-top: 0% !important;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 801px) and (max-width: 901px) {
+    .sidenavContainer {
+        margin-top: 6% !important;
+        overflow: hidden;
+        height: calc(100%-7%);
+        overflow: hidden;
+    }
+    #my-app {
+        position: absolute;
+        top: 2%;
+        margin-left: 8%;
+        font-size: 120%;
+    }
+    #main-toolbar {
+        background-color: var(--violet);
+        padding: 0 !important;
+        height: 13%;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1000px) {
+    .sidenavContainer {
+        margin-top: 5.5% !important;
+        overflow: hidden;
+        height: calc(100%-5.5%);
+        overflow: hidden;
+    }
+    #my-app {
+        position: absolute;
+        top: 2%;
+        margin-left: 8%;
+        font-size: 120%;
+    }
+    #main-toolbar {
+        background-color: var(--violet);
+        padding: 0 !important;
+        height: 13%;
+    }
+}
+
+@media screen and (min-width: 1001px) and (max-width: 2001px) {
+    .sidenavContainer {
+        margin-top: 4.5% !important;
+        overflow: hidden;
+        height: calc(100%-4.5%);
+        overflow: hidden;
+    }
+    #my-app {
+        position: absolute;
+        top: 1%;
+        margin-left: 8%;
+        font-size: 120%;
+    }
+    #main-toolbar {
+        background-color: var(--violet);
+        padding: 0 !important;
+        height: 13%;
+    }
+    #toolbar-menu {
+        position: absolute;
+        top: 1.5% !important;
+    }
+}
+
+#menus {
+    position: absolute;
+    width: 100%;
+}
+
+#main-toolbar {
+    background-color: var(--violet);
+    padding: 0 !important;
+}
+
+.sidenavContainer1 {
+    margin-top: 35%;
+    overflow: hidden;
+    height: 100%;
+}
+
+.list-name {
+    font-size: 150%;
+    align-items: center;
+    margin-left: 10%;
+    align-self: center;
+    font-weight: bold;
+}
+
+#sidenav {
+    overflow: hidden;
+    font-size: 180%;
+    overflow: hidden;
+    padding: 0% !important;
+}
+
+#sidenav-icon {
+    padding-left: 0%;
+}
+
+#sidenav .menu-item {
+    border-radius: 5;
+    text-align: left;
+    align-items: center;
+}
+
+#sidenav #icon-list:hover {
+    background: var(--pink);
+    height: 100%;
+    width: 90%;
+    border-radius: 10px;
+}
+
+#sidenav #list:hover {
+    background: var(--pink);
+    color: var(--white);
+    font-size: 15px;
+    /* font-weight: bold; */
+    height: 100%;
+    width: 90%;
+    position: absolute;
+    border-radius: 10px;
+    height: 100%;
+    padding: 0% !important;
+    margin-left: 1%;
+    align-items: center;
+}
+
+.icon:hover {
+    color: var(--white);
+}
+
+#toolbar-menu {
+    cursor: pointer;
+    position: absolute;
+    left: 2.3%;
+    top: 2.5%;
+    font-size: 150%;
+    padding: 0% !important;
+}
+
+#sidenav .active {
+    /* font-weight: bold;
+    font-size: 15px; */
+    color: black;
+    background: var(--yellow);
+    width: 95%;
+    height: 100%;
+    /* position: absolute; */
+    border-radius: 10px;
+    /*position: absolute;
+    left: 0%; */
+}
+
+#mat-list {
+    padding: 0 !important;
+}
+
+body {
+    overflow: hidden;
+    background-color: var;
+}
+
+ngx-bottom-nav {
+    background-color: var(--violet);
+    padding-bottom: 5px;
+}
+
+.icon {
+    color: black;
+    font-size: 170%;
+    /* margin-top: 50%; */
+    position: absolute;
+    left: 20%;
+    bottom: 25%;
+}
+
+.icon1 {
+    position: relative;
+    margin-right: 6%;
+    margin-left: 6%;
+    margin-bottom: 1.5%;
+}
+
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button,
+.mat-flat-button {
+    min-width: 52px !important;
+}
