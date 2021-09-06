@@ -1,8 +1,9 @@
-import { ConditionalExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import * as moment from 'moment';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { GetDataService } from '../services/get-data.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-weather-detail',
@@ -10,104 +11,180 @@ import { GetDataService } from '../services/get-data.service';
   styleUrls: ['./weather-detail.component.css']
 })
 export class WeatherDetailComponent implements OnInit {
-  WeatherData: any; local; lat; long;temp_celcius;temp_min;temp_max;temp_feels_like;name;
-  cityData = []; index: number; humidity; id;
-  constructor(private dbService: NgxIndexedDBService,
+
+  allCitiesFromTable = []; index; current: weather_detail; old: weather_detail;
+  second_old: weather_detail; lat; long;
+  constructor(private dbService: NgxIndexedDBService, private spinner: NgxSpinnerService,
     private route: ActivatedRoute, private router: Router, private dataService: GetDataService) {
-
-
-    this.dbService.getAll('people').subscribe((peoples) => {
-      this.cityData = peoples;
-      console.log(this.cityData);
+    this.spinner.show();
+    this.dbService.getAll('cities').subscribe((cities) => {
+      this.allCitiesFromTable = cities;
       this.route.params.subscribe(
         (params: Params) => {
           this.index = +params['id'];
           console.log(this.index)
-          this.getWeatherData(this.cityData, this.index)
+          this.getWeatherData(this.allCitiesFromTable, this.index)
         })
-
-      console.log(this.index)
-      if(this.index<13){
-      this.WeatherData = JSON.parse(localStorage.getItem('Weather'));
-      }else{
-        this.WeatherData = JSON.parse(localStorage.getItem('current'));
-
-      }
     });
+    this.spinner.hide();
 
-
-
+    console.log(moment(new Date()).format('YYYY-MM-DD HH:mm:ss'));
   }
 
-  ngOnInit(): void {
+  ngOnInit() { }
+  getWeatherData(cityData, i) {
+    this.spinner.show();
 
-  }
-  getWeatherData(data, i) {
-    // console.log(data[i].cityName)
-    if (i < 13) {
-      fetch('https://api.openweathermap.org/data/2.5/weather?q=' + data[i].cityName + '&appid=9ce2eb4084172fcd1a624bcf954f8222')
+    if (i < 15) {
+      fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityData[i].cityName + '&appid=9ce2eb4084172fcd1a624bcf954f8222')
         .then(response => response.json())
         .then(Totaldata => {
-          console.log(Totaldata)
-          localStorage.setItem('Weather', JSON.stringify(Totaldata))
+          var time = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+          this.dbService.getAllByIndex('citiesData', 'cityID', IDBKeyRange.only(i)).subscribe((weatherDetail) => {
+            if (weatherDetail.length < 3) {
+              this.dbService
+                .add('citiesData', {
+                  cityName: Totaldata.name,
+                  feels_like: Totaldata.main.feels_like,
+                  humidity: Totaldata.main.humidity,
+                  pressure: Totaldata.main.pressure,
+                  temp: Totaldata.main.temp,
+                  temp_min: Totaldata.main.temp_min,
+                  temp_max: Totaldata.main.temp_max,
+                  cityID: i,
+                  time: time
+                })
+                .subscribe((storeData) => {
+                  console.log('storeData: ', storeData);
+                }, error => {
+                  console.log(error);
+                });
+            } else {
+              let id = weatherDetail[0].id;
+              if (id) {
+                this.dbService.delete('citiesData', id).subscribe((newCityData) => {
+                  console.log('deleted:', newCityData);
+                });
+              }
+              this.dbService
+                .add('citiesData', {
+                  cityName: Totaldata.name,
+                  feels_like: Totaldata.main.feels_like,
+                  humidity: Totaldata.main.humidity,
+                  pressure: Totaldata.main.pressure,
+                  temp: Totaldata.main.temp,
+                  temp_min: Totaldata.main.temp_min,
+                  temp_max: Totaldata.main.temp_max,
+                  cityID: i,
+                  time: time
+                })
+                .subscribe((storeData) => {
+                  console.log('storeData: ', storeData);
+                }, error => {
+                  console.log(error);
+                });
+            }
+          });
+        });
+      this.setWeatherData(i);
 
-          this.setWeatherData(i);
-        })
     }
-    if (i == 13) {
+    if (i == 15) {
+      console.log('abc')
       let id = navigator.geolocation.watchPosition((position) => {
         this.lat = position.coords.latitude;
         this.long = position.coords.longitude;
-        console.log(
-          `lat:${position.coords.latitude}, lon: ${position.coords.longitude}`);
-      
-      fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + this.lat + '&lon=' + this.long + '&appid=9ce2eb4084172fcd1a624bcf954f8222')
-        .then(response => response.json())
-        .then(Totaldata => {
-          console.log(Totaldata)
-          localStorage.setItem('current', JSON.stringify(Totaldata))
+        console.log(`lat:${position.coords.latitude}, lon: ${position.coords.longitude}`);
 
-          this.setWeatherData(i);
-        })})
+        fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + this.lat + '&lon=' + this.long + '&appid=9ce2eb4084172fcd1a624bcf954f8222')
+          .then(response => response.json())
+          .then(Totaldata => {
+            console.log(Totaldata);
+            var time = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+            this.dbService.getAllByIndex('citiesData', 'cityID', IDBKeyRange.only(i)).subscribe((weatherDetail) => {
+              if (weatherDetail.length < 3) {
+                this.dbService
+                  .add('citiesData', {
+                    cityName: "City Name",
+                    feels_like: Totaldata.current.feels_like,
+                    humidity: Totaldata.current.humidity,
+                    pressure: Totaldata.current.pressure,
+                    temp: Totaldata.current.temp,
+                    temp_min: Totaldata.current.temp_min,
+                    temp_max: Totaldata.current.temp_max,
+                    cityID: i,
+                    time: time
+                  })
+                  .subscribe((storeData) => {
+                    console.log('storeData: ', storeData);
+                  }, error => {
+                    console.log(error);
+                  });
+              }
+              else {
+                let id = weatherDetail[0].id;
+                if (id) {
+                  this.dbService.delete('citiesData', id).subscribe((newCityData) => {
+                    console.log('deleted:', newCityData);
+                  });
+                }
+                this.dbService
+                  .add('citiesData', {
+                    cityName: "City Name",
+                    feels_like: Totaldata.current.feels_like,
+                    humidity: Totaldata.current.humidity,
+                    pressure: Totaldata.current.pressure,
+                    temp: Totaldata.current.temp,
+                    temp_min: Totaldata.current.temp_min,
+                    temp_max: Totaldata.current.temp_max,
+                    cityID: i,
+                    time: time
+                  })
+                  .subscribe((storeData) => {
+                    console.log('storeData: ', storeData);
+                  }, error => {
+                    console.log(error);
+                  });
+              }
+            });
+
+          })
+      })
+      this.setWeatherData(i);
+      this.spinner.hide();
+
     }
   }
+
+
   setWeatherData(i) {
-    if(i<13){
-    this.WeatherData = JSON.parse(localStorage.getItem('Weather'));
-    this.temp_celcius = (this.WeatherData.main.temp - 273.15).toFixed(0);
-    this.temp_min = (this.WeatherData.main.temp_min - 273.15).toFixed(0);
-    this.temp_max = (this.WeatherData.main.temp_max - 273.15).toFixed(0);
-    this.temp_feels_like = (this.WeatherData.main.feels_like - 273.15).toFixed(0);
-    this.humidity = (this.WeatherData.main.humidity);
-    this.name=this.WeatherData.name;}
-    else{
-      this.WeatherData = JSON.parse(localStorage.getItem('current'));
+    this.spinner.show();
 
-      this.temp_celcius = (this.WeatherData.current.temp - 273.15).toFixed(0);
-    this.temp_min = (this.WeatherData.current.temp  - 273.15).toFixed(0);
-    this.temp_max = (this.WeatherData.current.temp  - 273.15).toFixed(0);
-    this.temp_feels_like = (this.WeatherData.current.feels_like - 273.15).toFixed(0);
-    this.humidity = (this.WeatherData.current.humidity);
-    this.name="cityName"
-  }
-    
-  }
-  watchPosition() {
-    let userLatitude = 0;
-    let userLongitude = 0;
-    let id = navigator.geolocation.watchPosition((position) => {
-      this.lat = position.coords.latitude;
-      this.long = position.coords.longitude;
-      console.log(
-        `lat:${position.coords.latitude}, lon: ${position.coords.longitude}`);
-    }, (err) => {
-      console.log(err);
-    }, {
-      enableHighAccuracy: true,
-      timeout: 5000, maximumAge: 0
-    })
-  }
+    this.dbService.getAllByIndex('citiesData', 'cityID', i).subscribe((weatherDetail) => {
+      let a: any = weatherDetail;
+      this.current = weatherDetail[0];
+      this.old = weatherDetail[1];
+      this.second_old = weatherDetail[2];
+      this.spinner.hide();
 
+    });
+  }
 
 
 }
+export interface weather_detail {
+  cityName: 'citiesData',
+  cityID: number,
+  id: number;
+  feels_like: number,
+  humidity: number,
+  pressure: number,
+  temp: number,
+  temp_min: number,
+  temp_max: number,
+  time: any
+}
+
+
+
+

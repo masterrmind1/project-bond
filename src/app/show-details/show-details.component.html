@@ -1,25 +1,13 @@
-<p>show-details works!</p>
-<button (click)="buttn()">btn</button>
-<!-- <ul>
-    <li *ngFor="let item of cityData ; let i=index;">
-        {{ item[i] }}
-    </li>
-</ul> -->
-<br>
-<hr>
-<button (click)="ondelet()">delet</button>
-
+<h1>Select city</h1>
 <div id="card-container">
     <div *ngFor="let item of cityData;let i=index">
-
-        <mat-card class="short" (click)='onClick(i)'>
+        <mat-card class="short" (click)="onClick(i)">
             <h5>{{item.cityName}}</h5>
-
         </mat-card>
     </div>
-    <mat-card class="short" (click)='onClick(13)'>
+    <mat-card class="short" (click)="onClick(15)">
         <h5>Current Weather Details</h5>
-
     </mat-card>
 
 </div>
+<ngx-spinner></ngx-spinner>

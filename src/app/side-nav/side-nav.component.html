@@ -1,41 +1,35 @@
 <mat-toolbar id="main-toolbar">
     <div>
-        <mat-icon *ngIf="device" style="font-size: 250%;margin-left: 100%;">home </mat-icon>
-
+        <mat-icon *ngIf="device" class="home-icon">home </mat-icon>
         <mat-icon *ngIf="!isMenuOpen && !device" (click)="toggle()" id="toolbar-menu">clear icon
         </mat-icon>
-
     </div>
     <div *ngIf="isMenuOpen && !device">
         <mat-icon (click)="toggle()" id="toolbar-menu">menu </mat-icon>
     </div>
-
-
     <span id="my-app">my App</span>
+    <section class="example-section">
+        <mat-slide-toggle (click)="switchTheme()" class="dark-mode-toggle" [color]="color">
+            <h5> {{ theme === "light-theme" ? "Switch to dark" : "Switch to light" }}</h5>
+        </mat-slide-toggle>
+    </section>
 </mat-toolbar>
+<mat-sidenav-container autosize="true" [ngClass]="sideNavClass" fullscreen *ngIf="!device">
+    <mat-sidenav mode="side" opened [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen" #sidenav id="sidenav">
 
-<!-- <span class="toolbar-spacer">
-    </span>
-    <mat-icon class="toolbar-icon" matBadge="g" matBadgePosition="after" matBadgeColor="accent">notification</mat-icon> -->
-
-<mat-sidenav-container autosize="true" [ngClass]="classs" fullscreen *ngIf="!device">
-    <mat-sidenav mode="side" opened (click)="toggleBar()" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen" #sidenav id="sidenav">
-
-        <mat-list id="menus" fxLayout="column" fxLayoutGap="13px">
+        <mat-list id="list-details" fxLayout="column" fxLayoutGap="13px">
             <div *ngIf="isMenuOpen">
-                <div style="padding: 2%;width: 95%; cursor: pointer;margin-left: 3%;" fxLayout="column" fxLayoutAlign="start start" *ngFor="let item of buttonSpecifications">
-                    <div matTooltip="{{item.matTooltip}}" matTooltipPosition="right" id="icon-list" style="margin-top: 2%;padding-left:5% ;" routerLinkActive="active" fxLayout="row" fxLayoutAlign="start start">
+                <div class="list-at-center" fxLayout="column" fxLayoutAlign="start start" *ngFor="let item of buttonSpecifications">
+                    <div matTooltip="{{item.matTooltip}}" matTooltipPosition="right" id="icon-list" class="list-align" routerLinkActive="active" fxLayout="row" fxLayoutAlign="start start">
                         <div style="padding: 2%;">
                             <mat-icon [routerLink]="[item.routerLink]">settings</mat-icon>
                         </div>
-                        <div style="margin-left: 3%;font-size: 85%;margin-top: 3%;" *ngIf="isMenuOpen" [routerLink]="[item.routerLink]">{{item.matTooltip}}</div>
+                        <div class="list-tooltip" *ngIf="isMenuOpen" [routerLink]="[item.routerLink]">{{item.matTooltip}}</div>
                     </div>
                 </div>
-
             </div>
-
             <div *ngIf="!isMenuOpen">
-                <div style="padding: 0%;width: 1%; cursor: pointer;margin-left: 0%;" *ngFor="let item of buttonSpecifications">
+                <div class="style-for-close-navbar" *ngFor="let item of buttonSpecifications">
                     <mat-list-item id="mat-list" class="item">
                         <div class="lists">
                             <button mat-flat-button matTooltip="{{item.matTooltip}}" [routerLink]="[item.routerLink]" routerLinkActive="active" id="list" matTooltipPosition="right" aria-label="Button that shows a red tooltip">
@@ -48,28 +42,25 @@
         </mat-list>
     </mat-sidenav>
 
-
     <body>
         <router-outlet></router-outlet>
 
+        <!-- <button class="toggle"  (click)="switchTheme()">
+            {{ theme === "light-theme" ? "Switch to dark" : "Switch to light" }}
+          </button> -->
     </body>
 
 </mat-sidenav-container>
 <ngx-bottom-nav *ngIf="device" id="bottom-nav">
-
     <button ngx-bottom-nav [routerLink]="['/city-detail']" routerLinkActive="active" class="icon1">
         <mat-icon class="icon" ngxBottomNavIcon>home</mat-icon>
       </button>
-
-
     <button ngx-bottom-nav [routerLink]="['/location']" routerLinkActive="active" class="icon1">
         <mat-icon class="icon" ngxBottomNavIcon>search</mat-icon>
       </button>
-
-
     <button ngx-bottom-nav [routerLink]="['/login']" routerLinkActive="active" class="icon1">
         <mat-icon class="icon" ngxBottomNavIcon>forum</mat-icon>
       </button>
-
-
 </ngx-bottom-nav>
+
+<ngx-spinner></ngx-spinner>

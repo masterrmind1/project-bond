@@ -1,0 +1,10 @@
+<h5>{{areaName}}</h5>
+<div *ngIf="a">
+    <h6>Ammonia:{{a.Ammonia.pollutant_avg}}</h6>
+    <h6>Carbonmonoxide:{{a["Carbon monoxide"].pollutant_avg}}</h6>
+    <h6>Fine particulate matter:{{ a["Fine particulate matter"].pollutant_avg}}</h6>
+    <h6>Nitrogen Dioxide:{{a["Nitrogen Dioxide"].pollutant_avg}}</h6>
+    <h6>OZONE:{{a.OZONE.pollutant_avg}}</h6>
+</div>
+<button mat-flat-button color="accent" [routerLink]="['../']">Back</button>
+<ngx-spinner></ngx-spinner>

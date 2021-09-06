@@ -1,11 +1,11 @@
-<form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>States</mat-label>
-        <input type="text" placeholder="Pick one or type" aria-label="States" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{option}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-</form>
+<body>
+    <div id="state-card-container">
+        <div *ngFor="let item of allStates;let i=index">
+            <mat-card class="short-state" (click)="showStates(i)">
+                <h5>{{item}}</h5>
+            </mat-card>
+        </div>
+    </div>
+
+</body>
+<ngx-spinner></ngx-spinner>

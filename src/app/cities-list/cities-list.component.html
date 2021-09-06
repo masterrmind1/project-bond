@@ -1,0 +1,10 @@
+<p>cities-list works!</p>
+<div (click)="getDetails()" *ngIf="cityName">
+    <mat-card class="short">
+
+        <h2 style="cursor: pointer">{{cityName}}</h2>
+    </mat-card>
+
+</div>
+<button mat-flat-button color="accent" [routerLink]="['../']">Back</button>
+<ngx-spinner></ngx-spinner>

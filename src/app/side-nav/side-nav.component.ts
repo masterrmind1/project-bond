@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, Renderer2 } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { DOCUMENT } from '@angular/common';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-side-nav',
@@ -8,9 +10,12 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements OnInit {
+  color: ThemePalette = 'primary';
+  theme: Theme = 'light-theme';
+
   @Input() authentication:boolean;
   isMenuOpen = true;
-  classs: string;
+  sideNavClass: string;
   device;
   isMobile: boolean;
   buttonSpecifications=[
@@ -25,17 +30,20 @@ export class SideNavComponent implements OnInit {
   buttonforDevice=[
     { routerLink:'/city-detail',icon:'home'}, { routerLink:'/location',icon:'search'}, 
     { routerLink:'/login',icon:'forum'}  ]
-  constructor(private deviceService: DeviceDetectorService, public auth: AngularFireAuth) {
+  constructor(private deviceService: DeviceDetectorService, public auth: AngularFireAuth, private renderer: Renderer2,
+    @Inject(DOCUMENT) private document: Document) {
     this.device = this.deviceService.getDeviceInfo();
     this.isMobile = this.deviceService.isMobile();
     this.device = this.isMobile;
     console.log(this.isMobile);
   }
   ngOnInit() {
+    this.initializeTheme();
+
     if (this.device) {
-      this.classs = "sidenavContainer1";
+      this.sideNavClass = "sidenavContainer1";
     } else {
-      this.classs = "sidenavContainer";
+      this.sideNavClass = "sidenavContainer";
     }
     console.log(this.isMobile);
 
@@ -44,14 +52,22 @@ export class SideNavComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
     console.log(this.isMenuOpen)
   }
-  toggleBar() {
 
-  }
   logout(){
     this.auth.signOut();
 
   }
   
-  
-
+  switchTheme() {
+    this.document.body.classList.replace(
+      this.theme,
+      this.theme === 'light-theme'
+        ? (this.theme = 'dark-theme')
+        : (this.theme = 'light-theme')
+    );
+  }
+  initializeTheme = (): void =>
+    this.renderer.addClass(this.document.body, this.theme);
 }
+export type Theme = 'light-theme' | 'dark-theme';
+

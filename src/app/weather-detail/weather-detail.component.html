@@ -1,8 +1,51 @@
-<div id="divWeatherMain">
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{temp_celcius}}°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">{{temp_min}}° / {{temp_max}}°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{temp_feels_like}}°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{name}}</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{humidity}}%</div>
+<div>
+    <mat-accordion *ngIf="current && current.cityName.length > 0">
+        <mat-expansion-panel [expanded]=true>
+            <mat-expansion-panel-header>
+                <mat-panel-title>{{current.time. slice(0, 10)}} </mat-panel-title>
+                <mat-panel-description>
+                    weather Detail of {{current.time}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{current.temp}}°</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">{{current.temp_min}}° / {{current.temp_max}}°</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{current.feels_like}}°</div>
+            <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{current.cityName}}</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{current.humidity}}%</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;font-weight: bold;">Weather Detail at : {{current.time}}%</div>
 
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngIf="old" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>{{old.time. slice(0, 10)}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    weather Detail of {{old.time}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{old.temp}}°</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">{{old.temp_min}}° / {{old.temp_max}}°</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{old.feels_like}}°</div>
+            <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{old.cityName}}</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{old.humidity}}%</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;font-weight: bold;">Weather Detail at : {{old.time}}%</div>
+
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngIf="second_old" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>{{second_old.time. slice(0, 10)}} </mat-panel-title>
+                <mat-panel-description>
+                    weather Detail of {{second_old.time}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{second_old.temp}}°</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">{{second_old.temp_min}}° / {{second_old.temp_max}}°</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{second_old.feels_like}}°</div>
+            <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{second_old.cityName}}</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{second_old.humidity}}%</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;font-weight: bold;">Weather Detail at : {{second_old.time}}%</div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
+<ngx-spinner></ngx-spinner>

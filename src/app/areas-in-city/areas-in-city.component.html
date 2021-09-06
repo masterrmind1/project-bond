@@ -1,0 +1,8 @@
+<p>areas-in-city works!</p>
+<div *ngFor="let item of cities; let i=index">
+    <mat-card (click)="goToDetailsOfPollution(i)">{{item}}</mat-card>
+
+
+</div>
+<button mat-flat-button color="accent" [routerLink]="['../']">Back</button>
+<ngx-spinner></ngx-spinner>

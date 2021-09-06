@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnChanges, OnInit, Output } from '@angular/cor
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import { userInfo } from '../user.module';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login-page',
@@ -15,13 +16,14 @@ export class LoginPageComponent implements OnInit {
   user: userInfo;
   authentication: boolean;
   isVerified: string;
-  constructor(public auth: AngularFireAuth) {
-    
+  constructor(public auth: AngularFireAuth,private spinner: NgxSpinnerService) {
+    this.spinner.show();
     this.user=JSON.parse(localStorage.getItem('user'));
     this.authentication = Boolean(localStorage.getItem('email' || 'name'));
     this.name = localStorage.getItem('name');
     this.email = localStorage.getItem('email');
-  
+    this.spinner.hide();
+
   }
 
   ngOnInit() {
@@ -29,19 +31,15 @@ export class LoginPageComponent implements OnInit {
   }
 
   googleLogin() {
+    this.spinner.show();
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    // this.auth.user.subscribe(a => {
-    //   console.log(a)
-    // });
-    firebase.auth().onAuthStateChanged(user => {
+      firebase.auth().onAuthStateChanged(user => {
       
       if (user) {
         localStorage.setItem('user', JSON.stringify(user))
         this.user=JSON.parse(localStorage.getItem('user'));
         this.authentication = !!this.user.email;
         console.log(this.authentication);
-        // this.isVerified = this.authentication.toString();
-        // localStorage.setItem('isverified', this.isVerified);
         localStorage.setItem('name', this.user.displayName);
         localStorage.setItem('email', this.user.email);
 
@@ -49,15 +47,15 @@ export class LoginPageComponent implements OnInit {
         this.email = localStorage.getItem('email');
         console.log(this.name);
       }
-
     });
+    this.spinner.hide();
+
 
   }
   facebookLogin() {
+    this.spinner.show();
     this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
-
     firebase.auth().onAuthStateChanged(user => {
-      
       if (user) {
         localStorage.setItem('user', JSON.stringify(user))
         this.user=JSON.parse(localStorage.getItem('user'));
@@ -70,14 +68,13 @@ export class LoginPageComponent implements OnInit {
         this.email = localStorage.getItem('email');
         console.log(this.name);
       }
-
     });
-
+    this.spinner.hide();
 
 
   }
   loggedIn() {
-
+    this.spinner.show();
     this.auth.createUserWithEmailAndPassword(this.email, this.password)
       .then((userInformation) => {
 
@@ -97,26 +94,13 @@ export class LoginPageComponent implements OnInit {
         this.email = localStorage.getItem('email');
         console.log(this.name);
       }
-
-
-
-      //     if (this.user) {
-      //   this.authentication = true;
-      //   localStorage.setItem('name', this.user.displayName);
-      //   localStorage.setItem('email', this.user.email);
-      //   this.name = localStorage.getItem('name');
-      //   this.email = localStorage.getItem('email');
-      //   console.log(this.name);
-      // }
-
     });
-
-
+    this.spinner.hide();
 
   }
   logout() {
+    this.spinner.show();
     this.auth.signOut();
-
     firebase.auth().signOut().then(() => {
       console.log("sign out succesfull")
     }).catch((error) => {
@@ -124,8 +108,7 @@ export class LoginPageComponent implements OnInit {
     });
     this.authentication = false;
     localStorage.clear();
-
-
+    this.spinner.hide();
 
   }
 }

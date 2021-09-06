@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Comp2Component } from './comp2.component';
+import { PollutionDataComponent } from './pollution-data.component';
 
-describe('Comp2Component', () => {
-  let component: Comp2Component;
-  let fixture: ComponentFixture<Comp2Component>;
+describe('PollutionDataComponent', () => {
+  let component: PollutionDataComponent;
+  let fixture: ComponentFixture<PollutionDataComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Comp2Component ]
+      declarations: [ PollutionDataComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Comp2Component);
+    fixture = TestBed.createComponent(PollutionDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
