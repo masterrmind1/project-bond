@@ -1,10 +1,28 @@
 # Weather App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+     A flexible tool to check the weather details of current location as well as that of the different areas of all the cities in india, also check pollution status of different areas of diferent cities.
+  
+## Table of Contents
+   - Introduction
+   - installation
+   - the project's aim
+   - How it works
+   - Important Links
 
-## wisdom
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+- Second item
+- Third item
+
+## Installatoion
+Install node modules npm i
+##Ready to use with following libraries
+  - flex-layout 12.0.0-beta.34
+  - Angular material 12.2.0
+  - ngx-indexed-db 6.1.2
+
+
+
 
 ## Code scaffolding
 
