@@ -1,8 +1,16 @@
-<p>areas-in-city works!</p>
-<div *ngFor="let item of cities; let i=index">
-    <mat-card (click)="goToDetailsOfPollution(i)">{{item}}</mat-card>
-
-
-</div>
-<button mat-flat-button color="accent" [routerLink]="['../']">Back</button>
 <ngx-spinner></ngx-spinner>
+
+<body>
+    <div id="card-container">
+        <div class="wrapper" *ngFor="let item of areaName; let i=index" div fxLayout="row">
+            <mat-card class="area-name">
+                <h5 (click)="goToDetailsOfPollution(i, item)" style="position:relative">{{item}}</h5>
+                <mat-icon *ngIf="!boolianForAreas[item]" class="bookmark-icon" (click)="bookmarkPollutionData(i, item)">bookmark_border</mat-icon>
+                <mat-icon *ngIf="boolianForAreas[item]" class="bookmark-icon" (click)="removeBookmark(i, item)">bookmark</mat-icon>
+            </mat-card>
+        </div>
+
+    </div>
+    <button class="back-button" mat-flat-button color="accent" [routerLink]="['../']">Back</button>
+
+</body>

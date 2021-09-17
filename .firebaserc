@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "project-bond-e6798"
+  },
+  "targets": {
+    "project-bond-e6798": {
+      "hosting": {
+        "myProject-bond": [
+          "project-bond-e6798"
+        ]
+      }
+    }
   }
 }

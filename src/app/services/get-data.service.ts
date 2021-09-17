@@ -23,7 +23,7 @@ states={'Andhra Pradesh':[1,8,15,22],'Arunachal Pradesh':[29], 'Assam':[36], 'Bi
 'Delhi':[130],'Jammu and Kashmir':[652],'Puducherry':[1254]
 };
 state=['Assam','Bihar', 'Gujarat','Maharashtra'];
-
+cityState;cityName;areaOfCity;
   constructor( private http: HttpClient, private db: AngularFireDatabase) { }
   getData(id){
 this.index=id;
@@ -34,8 +34,9 @@ this.index=id;
 sendState(){
   return this.states;
 }
-getCityId(Id){
+getCityIdAndState(Id,state){
 this.cityId=Id;
+this.cityState=state;
 }
 sendCityId(){
   return this.cityId;
@@ -43,5 +44,20 @@ sendCityId(){
 sendStateArrey(){
   // Object.keys(this.states)
   return this.state
+}
+sendStateOfCity(){
+return this.cityState;
+}
+getNameOfArea(city){
+this.cityName=city;
+}
+sendCityName(){
+  return this.cityName
+}
+getAreaName(area){
+this.areaOfCity=area;
+}
+sendAreaName(){
+  return this.areaOfCity
 }
 }

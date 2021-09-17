@@ -1,11 +1,17 @@
+<h1>Your Bookmarks</h1>
+<!-- <div *ngFor="let item of areaName">
+    <mat-card class="short-state" (click)="followBookmark(i, item)">
+        <h5>{{item}}</h5>
+    </mat-card>
+</div> -->
+
 <body>
     <div id="state-card-container">
-        <div *ngFor="let item of allStates;let i=index">
-            <mat-card class="short-state" (click)="showStates(i)">
+        <div class="wrapper" *ngFor="let item of allStates;let i=index">
+            <mat-card class="short-state" (click)="showStates(i, item)">
                 <h5>{{item}}</h5>
             </mat-card>
         </div>
     </div>
-
 </body>
 <ngx-spinner></ngx-spinner>

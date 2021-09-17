@@ -1,7 +1,68 @@
-mat-card {
-    margin: 4px;
-    box-shadow: 0px 2px 11px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
-    cursor: pointer;
-    font-size: 150%;
-    font-weight: 500;
-}
+    mat-card {
+        margin: 4px;
+        box-shadow: 0px 2px 11px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+        display: flex;
+        flex-flow: row wrap;
+        z-index: 0;
+        position: relative;
+    }
+    
+    .area-name {
+        width: 4000%;
+        cursor: pointer;
+        position: relative;
+        margin-top: 8%;
+    }
+    
+    #card-container {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    
+    .bookmark-icon {
+        position: absolute;
+        z-index: 15;
+        cursor: default;
+        margin-left: 70%;
+    }
+    
+    .wrapper {
+        display: flex;
+        width: 30%;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        grid-auto-rows: 100px;
+        margin-left: 2%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .back-button {
+        margin: 5%;
+    }
+    /* @media screen and (min-width: 1001px) and (max-width: 2001px) {
+        .bookmark-icon {
+            margin-left: 45%;
+        }
+    }
+     */
+    /* @media screen and (min-width: 900px) and (max-width: 1200px) {
+        .bookmark-icon {
+            margin-left: 25%;
+        }
+    }
+     */
+    
+    @media screen and (min-width: 600px) and (max-width: 700px) {
+        .bookmark-icon {
+            margin-left: 15% !important;
+            position: absolute;
+        }
+    }
+    
+    @media screen and (min-width: 500px) and (max-width: 600px) {
+        .bookmark-icon {
+            margin-left: 15% !important;
+            position: absolute;
+        }
+    }

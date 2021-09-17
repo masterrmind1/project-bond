@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { GetDataService } from '../services/get-data.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { HttpClient } from '@angular/common/http';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-get-location',
@@ -15,12 +18,28 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class GetLocationComponent implements OnInit {
   myControl = new FormControl(''); array = []; pollutionData; states;
-  allStates: string[] = []; stateKey = {}; 
-  filteredOptions: Observable<string[]>; id;
+  allStates: string[] = []; stateKey = {}; pollutionOfArea;areaNames={};areaName=[];cityName=[]
+  filteredOptions: Observable<string[]>; id;Data;
   constructor(private dataService: GetDataService, private database: AngularFireDatabase,private spinner: NgxSpinnerService,
-    private router: Router) {
+    private router: Router, private http: HttpClient,  private dbService: NgxIndexedDBService) {
     this.allStates = dataService.sendStateArrey();
+    console.log(this.allStates)
     // this.callAPI();
+
+   
+      this.dbService.getAll('bookmarkData').subscribe((bookmarkData) => {
+        console.log(bookmarkData);
+this.Data=bookmarkData
+        for(let a=0; a< bookmarkData.length; a++){
+          this.areaName.push(bookmarkData[a].area_name)
+        this.cityName.push(bookmarkData[a].city_name);
+        this.areaNames[ bookmarkData[a].city_name ] = bookmarkData[a].area_name;
+
+        }
+        // this.cityName.map((val, idx) => { this.areaNames[val] = this.areaName });
+
+        console.log(this.areaNames)
+      });
   }
 
   ngOnInit() {
@@ -29,6 +48,11 @@ export class GetLocationComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
+  }
+
+  followBookmark(i, item){
+    // this.router.navigate(['location/', this.nameOfCity, 'areas', i])
+
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -48,24 +72,24 @@ export class GetLocationComponent implements OnInit {
   // callAPI(){
   // fetch('https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000014603f9ebbec94dfd47badb0359240ce4&format=json&offset=0&limit=3734')
   // .then(response => response.json())
-  //   // .then(Totaldata => {
+  //   .then(Totaldata => {
   //     this.database.list('pollutionData').valueChanges().subscribe(data => {
   //       this.pollutionData = data;
-  //       console.log(data)
-  //       console.log(Object.keys(this.pollutionData));
-
-
+  //       console.log(Totaldata)
+  //       // console.log(Object.keys(this.pollutionData));
   //      });
-
+  //     });
   // }
-  showStates(i) {
+  showStates(i, state) {
     this.states = this.dataService.sendStateArrey();
     console.log(this.states[i])
-    this.dataService.getCityId(i);
+    this.dataService.getCityIdAndState(i,state);
     this.router.navigate(['location', this.states[i]]);
   }
+  getBookmarkData(){
 
-  // }
+  }
+
 }
 export interface Pollution {
   city: string;

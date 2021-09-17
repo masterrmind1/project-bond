@@ -1,14 +1,27 @@
 mat-card {
     margin: 4px;
     box-shadow: 0px 2px 11px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+    width: 100%;
 }
 
 .short-state {
-    width: auto;
     cursor: pointer;
+    margin-top: 3%;
+    text-align: center;
 }
 
 #state-card-container {
     display: flex;
     flex-flow: row wrap;
+}
+
+.wrapper {
+    width: 30%;
+    display: flex;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: 100px;
+    margin-left: 2%;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

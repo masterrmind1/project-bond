@@ -1,4 +1,4 @@
-<button class="logout-button" *ngIf="authentication" mat-raised-button color="warn" (click)="logout()">Logout</button>
+<!-- <button class="logout-button" *ngIf="authentication" mat-raised-button color="warn" (click)="logout()">Logout</button>
 <div class="center-content">
     <mat-card class="logout-card" *ngIf="authentication" style="margin-top: 10%;">
         <mat-card-content>
@@ -35,5 +35,38 @@
 
     </div>
 
-</div>
+</div> -->
 <ngx-spinner></ngx-spinner>
+
+<div id="card-container">
+    <mat-card class="short" [routerLink]="['CO']">
+        <h5>CO</h5>
+    </mat-card>
+</div>
+<div id="card-container" [routerLink]="['NH3']">
+    <mat-card class="short">
+        <h5>NH3</h5>
+    </mat-card>
+</div>
+<div id="card-container">
+    <mat-card class="short" [routerLink]="['NO2']">
+        <h5>NO2</h5>
+    </mat-card>
+</div>
+<div id="card-container">
+    <mat-card class="short" [routerLink]="['OZONE']">
+        <h5>OZONE</h5>
+    </mat-card>
+</div>
+<div id="card-container">
+    <mat-card class="short" [routerLink]="['SO2']">
+        <h5>SO2</h5>
+    </mat-card>
+</div>
+<div id="card-container">
+    <mat-card class="short" [routerLink]="['fine-particles']">
+        <h5>Fine-Particles</h5>
+    </mat-card>
+</div>
+
+<button *ngIf="isOpenFromPollutionComponent" mat-flat-button color="accent" [routerLink]="['../']">Back</button>

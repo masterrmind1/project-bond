@@ -9,6 +9,12 @@ import { WeatherDetailComponent } from './weather-detail/weather-detail.componen
 import { CitiesListComponent } from './cities-list/cities-list.component';
 import { AreasInCityComponent } from './areas-in-city/areas-in-city.component';
 import { PollutionDataComponent } from './pollution-data/pollution-data.component';
+import { FineParticulateMatterComponent } from './fine-particulate-matter/fine-particulate-matter.component';
+import { PollutantNO2Component } from './pollutant-no2/pollutant-no2.component';
+import { PollutantNH3Component } from './pollutant-nh3/pollutant-nh3.component';
+import { PollutantCOComponent } from './pollutant-co/pollutant-co.component';
+import { PollutantOZONEComponent } from './pollutant-ozone/pollutant-ozone.component';
+import { PollutantSO2Component } from './pollutant-so2/pollutant-so2.component';
 
 const appRoute:Routes=[
   // {path:' ', component:SideNavComponent},
@@ -16,9 +22,19 @@ const appRoute:Routes=[
   {path:'location', component:GetLocationComponent},
   {path:'city-detail', component:ShowDetailsComponent},
   {path:':id', component:WeatherDetailComponent},
-  {path:'location/:city', component:CitiesListComponent},
+  {path:'location/:state', component:CitiesListComponent},
   {path:'location/:city/areas', component:AreasInCityComponent},
   {path:'location/:city/areas/:number', component:PollutionDataComponent},
+  {path:'login/fine-particles', component:FineParticulateMatterComponent},
+  {path: 'login/NO2',component:PollutantNO2Component},
+  {path: 'login/NH3',component:PollutantNH3Component},
+  {path: 'login/CO',component:PollutantCOComponent},
+  {path: 'login/OZONE',component:PollutantOZONEComponent},
+  {path: 'login/SO2',component:PollutantSO2Component},
+  {path:'location/:city/areas/:number/pollutionInfo', component:LoginPageComponent}
+
+
+
 
 
   // {path:'**',redirectTo:'login'}

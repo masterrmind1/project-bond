@@ -7,6 +7,14 @@
     left: 20%;
 }
 
+mat-icon {
+    margin-top: 10%;
+}
+
+.mat-list-icon {
+    margin-top: 25%;
+}
+
 #bottom-nav {
     position: absolute;
     bottom: 0;
@@ -28,8 +36,8 @@
 } */
 
 #sidenav.menu-close {
-    width: 6%;
-    background-color: var(--light-violet);
+    width: 5.5%;
+    background-color: var(--white);
     font-size: 15px;
     overflow: hidden;
     height: 100%;
@@ -43,7 +51,7 @@
 #sidenav.menu-open {
     width: 19%;
     align-items: center;
-    background-color: var(--light-violet);
+    background-color: var(--white);
     position: absolute;
     margin-left: 0%;
     margin-top: 0% !important;
@@ -87,7 +95,7 @@
     #sidenav.menu-open {
         width: 30%;
         align-items: center;
-        background-color: var(--light-violet);
+        /* background-color: var(--light-violet); */
         position: absolute;
         margin-left: 0%;
         margin-top: 0% !important;
@@ -103,7 +111,7 @@
         font-size: 140%;
     }
     .sidenavContainer {
-        margin-top: 9% !important;
+        margin-top: 19% !important;
         overflow: hidden;
         height: calc(100%-9%);
         overflow: hidden;
@@ -123,6 +131,9 @@
         margin-left: 20%;
         font-size: 140%;
     }
+    #sidenav.menu-close {
+        width: 17%;
+    }
 }
 
 @media screen and (min-width: 400px) and (max-width: 580px) {
@@ -135,19 +146,22 @@
     #my-app {
         position: absolute;
         top: 1%;
-        margin-left: 15%;
+        margin-left: 12%;
         font-size: 140%;
     }
     #sidenav.menu-open {
         width: 30%;
     }
     #toolbar-menu {
-        position: absolute;
+        /* position: absolute; */
         top: 1.5% !important;
+    }
+    #sidenav.menu-close {
+        width: 14%;
     }
 }
 
-@media screen and (min-width: 581px) and (max-width: 900px) {
+@media screen and (min-width: 581px) and (max-width: 800px) {
     .sidenavContainer {
         margin-top: 8% !important;
         overflow: hidden;
@@ -157,7 +171,7 @@
     #sidenav.menu-open {
         width: 30%;
         align-items: center;
-        background-color: var(--light-violet);
+        background-color: var(--white);
         position: absolute;
         margin-left: 0%;
         margin-top: 0% !important;
@@ -169,16 +183,8 @@
         font-size: 140%;
     }
     #sidenav.menu-close {
-        width: 8%;
-        background-color: var(--light-violet);
-        font-size: 15px;
-        font-weight: bold;
-        overflow: hidden;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        margin-top: 0% !important;
-        align-items: center;
+        width: 10%;
+        /* background-color: var(--light-violet); */
     }
 }
 
@@ -196,9 +202,11 @@
         font-size: 120%;
     }
     #main-toolbar {
-        background-color: var(--violet);
         padding: 0 !important;
         height: 13%;
+    }
+    #sidenav.menu-close {
+        width: 7.5%;
     }
 }
 
@@ -216,33 +224,33 @@
         font-size: 120%;
     }
     #main-toolbar {
-        background-color: var(--violet);
         padding: 0 !important;
         height: 13%;
+    }
+    #sidenav.menu-close {
+        width: 7%;
     }
 }
 
 @media screen and (min-width: 1001px) and (max-width: 2001px) {
     .sidenavContainer {
-        margin-top: 4.5% !important;
+        margin-top: 5.2% !important;
         overflow: hidden;
         height: calc(100%-4.5%);
         overflow: hidden;
     }
     #my-app {
         position: absolute;
-        top: 1%;
-        margin-left: 8%;
+        top: 2.5%;
+        margin-left: 6%;
         font-size: 120%;
     }
     #main-toolbar {
-        background-color: var(--violet);
         padding: 0 !important;
         height: 13%;
     }
-    #toolbar-menu {
-        position: absolute;
-        top: 1.5% !important;
+    #sidenav.menu-close {
+        width: 6.5%;
     }
 }
 
@@ -252,7 +260,6 @@
 }
 
 #main-toolbar {
-    background-color: var(--violet);
     padding: 0 !important;
 }
 
@@ -267,19 +274,18 @@
     align-items: center;
     margin-left: 10%;
     align-self: center;
-    background-color: darkblue;
     font-weight: bold;
 }
 
 #sidenav {
-    font-size: 180%;
+    font-size: 130%;
     overflow: hidden;
     padding: 0% !important;
 }
 
 
-/* #sidenav-icon {
-    padding-left: 0%;
+/* mat-icon {
+    margin-top: 18% !important;
 } */
 
 #sidenav .menu-item {
@@ -315,19 +321,19 @@
 
 #toolbar-menu {
     cursor: pointer;
-    position: absolute;
-    left: 2.3%;
+    margin-left: 60%;
     top: 2.5%;
-    font-size: 150%;
+    font-size: 170%;
     padding: 0% !important;
 }
 
 #sidenav .active {
     color: black;
-    background: var(--yellow);
-    width: 95%;
+    background: var(--blue);
     height: 100%;
     border-radius: 10px;
+    height: 100%;
+    width: 90%;
 }
 
 
@@ -371,7 +377,6 @@ ngx-bottom-nav {
     padding: 2%;
     width: 95%;
     cursor: pointer;
-    margin-left: 3%;
 }
 
 .list-align {
@@ -383,6 +388,7 @@ ngx-bottom-nav {
     font-size: 250%;
     margin-left: 100%;
     margin-left: 1%;
+    margin-top: 40%;
 }
 
 .style-for-close-navbar {
@@ -395,10 +401,31 @@ ngx-bottom-nav {
 .list-tooltip {
     margin-left: 3%;
     font-size: 85%;
-    margin-top: 3%;
+    margin-top: 2.5%;
 }
 
 .dark-mode-toggle {
-    margin-left: 380%;
-    margin-bottom: 15%;
+    margin-left: 77%;
+    /* margin-bottom: 15%; */
+    font-weight: bold;
+    position: sticky;
+    border: none;
+    background-color: #3F51B5;
+    color: white;
+    border: none;
+}
+
+.menuForLogin {
+    margin-left: 3%;
+    border: none;
+    position: sticky;
+}
+
+#dropdownIcon {
+    font-weight: bold;
+    font-size: 300%;
+    margin-bottom: 100%;
+    margin-right: 50% !important;
+    float: right;
+    border: none;
 }

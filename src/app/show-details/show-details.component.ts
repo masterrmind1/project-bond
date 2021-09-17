@@ -11,6 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./show-details.component.css']
 })
 export class ShowDetailsComponent implements OnInit{
+  b=['a', 'c','d']
   cityData;
   cityBasicInfo;
   constructor(private db: AngularFireDatabase,

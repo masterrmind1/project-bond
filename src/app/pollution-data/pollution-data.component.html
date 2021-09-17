@@ -1,10 +1,14 @@
+<button class="help-button" matTooltip="Help" matTooltipPosition="right" [routerLink]="[ '/location/:city/areas/index/pollutionInfo' ]">
+<mat-icon >help</mat-icon></button>
+
+
 <h5>{{areaName}}</h5>
-<div *ngIf="a">
-    <h6>Ammonia:{{a.Ammonia.pollutant_avg}}</h6>
-    <h6>Carbonmonoxide:{{a["Carbon monoxide"].pollutant_avg}}</h6>
-    <h6>Fine particulate matter:{{ a["Fine particulate matter"].pollutant_avg}}</h6>
-    <h6>Nitrogen Dioxide:{{a["Nitrogen Dioxide"].pollutant_avg}}</h6>
-    <h6>OZONE:{{a.OZONE.pollutant_avg}}</h6>
+<div *ngIf="pollutionOfArea">
+    <h6>Ammonia:{{pollutionOfArea.Ammonia.pollutant_avg}}</h6>
+    <h6>Carbonmonoxide:{{pollutionOfArea["Carbon monoxide"].pollutant_avg}}</h6>
+    <h6>Fine particulate matter:{{ pollutionOfArea["Fine particulate matter"].pollutant_avg}}</h6>
+    <h6>Nitrogen Dioxide:{{pollutionOfArea["Nitrogen Dioxide"].pollutant_avg}}</h6>
+    <h6>OZONE:{{pollutionOfArea.OZONE.pollutant_avg}}</h6>
 </div>
 <button mat-flat-button color="accent" [routerLink]="['../']">Back</button>
 <ngx-spinner></ngx-spinner>

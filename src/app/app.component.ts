@@ -1,7 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-
-import { Subscription } from 'rxjs';
-import { DeviceDetectorService } from 'ngx-device-detector';
+import { Component,OnInit } from '@angular/core';
 
 
 

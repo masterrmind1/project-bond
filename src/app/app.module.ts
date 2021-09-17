@@ -35,7 +35,14 @@ import { PollutionDataComponent } from './pollution-data/pollution-data.componen
 import { NgxSpinnerModule } from "ngx-spinner";  
 import { NgDarkmodeModule } from 'ng-darkmode';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { DarkModeToggleComponent } from './dark-mode-toggle/dark-mode-toggle.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { PollutantCOComponent } from './pollutant-co/pollutant-co.component';
+import { PollutantNO2Component } from './pollutant-no2/pollutant-no2.component';
+import { FineParticulateMatterComponent } from './fine-particulate-matter/fine-particulate-matter.component';
+import { PollutantNH3Component } from './pollutant-nh3/pollutant-nh3.component';
+import { PollutantSO2Component } from './pollutant-so2/pollutant-so2.component';
+import { PollutantOZONEComponent } from './pollutant-ozone/pollutant-ozone.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 const dbConfig: DBConfig = {
   name: 'MyDb',
@@ -67,6 +74,18 @@ const dbConfig: DBConfig = {
       { name: 'time', keypath: 'time', options: { unique:true} }
 
     ]
+  },
+  {
+    store: 'bookmarkData',
+    storeConfig: { keyPath: 'id', autoIncrement: true },
+    storeSchema: [
+      { name: 'state_name', keypath: 'state_name', options: { unique: false } },
+      { name: 'city_name', keypath: 'city_name', options: { unique: false } },
+      { name: 'area_name', keypath: 'area_name', options: { unique: false } },
+      { name: 'area_id', keypath: 'area_id', options: { unique: false } },
+      {name: 'isBookmarked', keypath: 'isBookmarked', options: {unique: false}}
+    ]
+    
   }
   ]
 };
@@ -83,7 +102,7 @@ const dbConfig: DBConfig = {
     WeatherDetailComponent,
     CitiesListComponent,
     AreasInCityComponent,
-    PollutionDataComponent,DarkModeToggleComponent
+    PollutionDataComponent, PollutantCOComponent, PollutantNO2Component, FineParticulateMatterComponent,PollutantNH3Component, PollutantSO2Component, PollutantOZONEComponent
   ],
   imports: [
     BrowserModule, FormsModule, NgxIndexedDBModule.forRoot(dbConfig), MatAutocompleteModule, ReactiveFormsModule,
@@ -95,7 +114,7 @@ const dbConfig: DBConfig = {
     }),MatExpansionModule,
     BrowserAnimationsModule, HttpClientModule,    NgDarkmodeModule,
     MatToolbarModule,
-    MatTooltipModule,NgxSpinnerModule,
+    MatTooltipModule,NgxSpinnerModule,AngularFireStorageModule,MatMenuModule,
     MatInputModule,
     MatSidenavModule, RoutingAppModule, FlexLayoutModule,
      RouterModule, AngularFireAuthModule, AngularFireModule.initializeApp(environment.firebase),
