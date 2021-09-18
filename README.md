@@ -3,17 +3,23 @@
      A flexible tool to check the weather details of current location as well as that of the different areas of all the cities in india, also check pollution status of different areas of diferent cities.
   
 ## Table of Contents
-   - Introduction
-   - installation
-   - the project's aim
-   - How it works
-   - Important Links
 
+   - [ Introduction]()
+   - [ installation]()
+   - [ the project's aim]()
+   - [ How it works]()
+   - [Highlights]()
+   - [ Important Links]()
+   - [ screenShot]()
 
+## Highlights
+- Use[ OpenWeatherMap](https://openweathermap.org/) API
+- Use Material Design 2
+- Dark Mode
+- Support two language. English & Persian
+- Use NGX Index Database
 
-- Second item
-- Third item
-
+## screenShot
 ## Installatoion
 Install node modules npm i
 
