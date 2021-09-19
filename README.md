@@ -6,49 +6,38 @@
 
    - [ Introduction]()
    - [ installation]()
-   - [ the project's aim]()
+   - [Project's aim]()
    - [ How it works]()
    - [Highlights]()
    - [ Important Links]()
    - [ screenShot]()
+   - [Architecture]()
 
+## Introduction
+  This is usefull for knowing current weather as well as past 3 weathers histories of each city. It also help to know pollution details of different areas of each cities of india and pollution details of different ingredients of air which creates pollution and more detail information about that pollutatns. 
+  ## installation
+  Install node modules npm i
+## Project's aim
+Provide weather details of different places and pollution details at same platform.
+## How it works
 ## Highlights
 - Use[ OpenWeatherMap](https://openweathermap.org/) API
 - Use Material Design 2
 - Dark Mode
 - Support two language. English & Persian
 - Use NGX Index Database
+## Important Links
+- [ OpenWeatherMap](https://openweathermap.org/) API
+- [firebase](firebase.com)
 
 ## screenShot
-## Installatoion
-Install node modules npm i
-
 
 ## Ready to use with following libraries
   - flex-layout 12.0.0-beta.34
   - Angular material 12.2.0
   - ngx-indexed-db 6.1.2
+##  screenShot
+## Architecture
 
 
-
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 # project-bond
