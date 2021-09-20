@@ -10,6 +10,7 @@
    -  How it works
    -  How to handle locally
    - Highlights
+   - Demo Version
     - External Service Dependencies
    -  Important Links    
    -  installation
@@ -35,6 +36,9 @@ The main idea of this app as per its name indicates 'weather vision' is to allow
 - Dark Mode
 - Support one language -English
 - Use NGX Index Database
+
+## Demo Version
+Deployment from the master branch - [myApp]()
 
 ## External Service Dependencies
 -OAuth Social Authentication
