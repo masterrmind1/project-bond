@@ -10,6 +10,7 @@
    -  How it works
    -  How to handle locally
    - Highlights
+   - API's
    - Demo Version
     - External Service Dependencies
    -  Important Links    
@@ -23,6 +24,7 @@
  
 ## Project's aim
 Provide weather details of different places and pollution details of different areas of all cities of india at same platform. Also allow user to add his places as bookmark.
+Atchivment of project is this also works in offline mode and can show you last cached data prom API.
 ## How it works
 The main idea of this app as per its name indicates 'weather vision' is to allow user to check weather data of any city in allover India as well as user can check polltuion status of perticular area of any city in india. Also allows user to add any five places as bookmark for pollution details.
 
@@ -36,7 +38,16 @@ The main idea of this app as per its name indicates 'weather vision' is to allow
 - Dark Mode
 - Support one language -English
 - Use NGX Index Database
+- Service Worker
+    This project is built with Angular's Service-Worker:
 
+        - Service-Workers only work in a production build, so to test, use 'ng build --prod' and run it on a HTTPS server. Example on firebase.
+        - Manifest created for app to be installable + icons
+        - Using SwUpdate service to show promt when app is opened and new version is available on server
+        - Static files are cached, meaning the app works in offline mode
+
+## API's:
+  - [API for weather detail for perticular city](https://api.openweathermap.org/data/2.5/weather?q=mumbai&appid=9ce2eb4084172fcd1a624bcf954f8222)
 ## Demo Version
 Deployment from the master branch - [myApp]()
 
