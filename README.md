@@ -11,9 +11,8 @@
    -  How to handle locally
    - Highlights
    -  Important Links    
-        -  installation
+   -  installation
    -  screenShot
-
    - Architecture
 
 ## Introduction
