@@ -1,17 +1,22 @@
-<h1>Your Bookmarks</h1>
-<!-- <div *ngFor="let item of areaName">
-    <mat-card class="short-state" (click)="followBookmark(i, item)">
-        <h5>{{item}}</h5>
-    </mat-card>
-</div> -->
-
 <body>
-    <div id="state-card-container">
-        <div class="wrapper" *ngFor="let item of allStates;let i=index">
-            <mat-card class="short-state" (click)="showStates(i, item)">
-                <h5>{{item}}</h5>
-            </mat-card>
+    <div style="margin-bottom: 40%;">
+
+        <mat-card style="width: 94%;margin-left: 3%;margin-top: 2%;" (click)="bookmarks()">Your Bookmarks</mat-card>
+        <div *ngIf="showBookmarks">
+            <div *ngFor="let item of areaName">
+                <mat-card class="wrapper" (click)="followBookmark(i, item)">
+                    <h5>{{item}}</h5>
+                </mat-card>
+            </div>
         </div>
+
+        <div id="state-card-container">
+            <div class="wrapper" *ngFor="let item of allStates;let i=index">
+                <mat-card class="short-state" (click)="showStates(i, item)">
+                    <h5>{{item}}</h5>
+                </mat-card>
+            </div>
+        </div>
+        <ngx-spinner></ngx-spinner>
     </div>
 </body>
-<ngx-spinner></ngx-spinner>

@@ -10,4 +10,37 @@
 
 mat-expansion-panel {
     margin-top: 2%;
+    background-color: rgb(236, 132, 132);
+    width: 80%;
+    margin-left: 10%;
+}
+
+.temp {
+    font-size: 32px;
+    margin-top: 3px;
+}
+
+.avg-temp {
+    font-size: 100%;
+    margin-top: 2%;
+}
+
+.feels-like {
+    font-size: 100%;
+}
+
+.humidity {
+    font-size: 100%;
+    margin-top: 2%;
+}
+
+.city-name {
+    font-size: 250%;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.time {
+    font-size: 12px;
+    font-weight: bold;
 }

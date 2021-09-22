@@ -21,7 +21,19 @@ mat-card {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     grid-auto-rows: 100px;
-    margin-left: 2%;
+    margin-left: 3%;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+@media screen and (min-width:500px) and (max-width: 699px) {
+    .wrapper {
+        width: 45%;
+    }
+}
+
+@media screen and (min-width: 200px) and (max-width: 499px) {
+    .wrapper {
+        width: 70%;
+    }
 }

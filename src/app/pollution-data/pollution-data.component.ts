@@ -22,7 +22,7 @@ export class PollutionDataComponent implements OnInit {
       this.areaName=dataService.sendAreaName()
      this.stateName=dataService.sendStateOfCity();
      this.cityName=dataService.sendCityName()
-     console.log(this.cityName)
+     console.log(this.areaName)
      if(this.areaName){
      console.log(this.areaName.split(' ').join('%20'))
      
@@ -38,6 +38,9 @@ export class PollutionDataComponent implements OnInit {
 
           }
         });
+      }else{
+          this.router.navigate(['/location']);
+       
       }
       this.spinner.hide();
 

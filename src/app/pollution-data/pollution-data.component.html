@@ -1,14 +1,23 @@
-<button class="help-button" matTooltip="Help" matTooltipPosition="right" [routerLink]="[ '/location/:city/areas/index/pollutionInfo' ]">
+<body>
+    <div style="margin-bottom: 40%;">
+
+        <button class="help-button" matTooltip="Help" matTooltipPosition="right" [routerLink]="[ '/location/:city/areas/index/pollutionInfo' ]">
 <mat-icon >help</mat-icon></button>
+        <div style="    margin-left: 7%;
+">
+            <mat-card id="large-mat-card" *ngIf="pollutionOfArea">
 
+                <h5>{{areaName}}</h5>
 
-<h5>{{areaName}}</h5>
-<div *ngIf="pollutionOfArea">
-    <h6>Ammonia:{{pollutionOfArea.Ammonia.pollutant_avg}}</h6>
-    <h6>Carbonmonoxide:{{pollutionOfArea["Carbon monoxide"].pollutant_avg}}</h6>
-    <h6>Fine particulate matter:{{ pollutionOfArea["Fine particulate matter"].pollutant_avg}}</h6>
-    <h6>Nitrogen Dioxide:{{pollutionOfArea["Nitrogen Dioxide"].pollutant_avg}}</h6>
-    <h6>OZONE:{{pollutionOfArea.OZONE.pollutant_avg}}</h6>
-</div>
-<button mat-flat-button color="accent" [routerLink]="['../']">Back</button>
-<ngx-spinner></ngx-spinner>
+                <div>
+                    <h6>Ammonia:{{pollutionOfArea.Ammonia.pollutant_avg}}</h6>
+                    <h6>Carbonmonoxide:{{pollutionOfArea["Carbon monoxide"].pollutant_avg}}</h6>
+                    <h6>Fine particulate matter:{{ pollutionOfArea["Fine particulate matter"].pollutant_avg}}</h6>
+                    <h6>Nitrogen Dioxide:{{pollutionOfArea["Nitrogen Dioxide"].pollutant_avg}}</h6>
+                    <h6>OZONE:{{pollutionOfArea.OZONE.pollutant_avg}}</h6>
+                </div>
+            </mat-card>
+            <button mat-flat-button color="accent" [routerLink]="['../']">Back</button></div>
+        <ngx-spinner></ngx-spinner>
+    </div>
+</body>

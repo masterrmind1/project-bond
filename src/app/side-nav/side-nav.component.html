@@ -8,38 +8,38 @@
         <mat-icon (click)="toggle()" id="toolbar-menu">menu </mat-icon>
     </div>
     <span id="my-app">my App</span>
-    <button class="dark-mode-toggle">
-        <mat-slide-toggle matTooltip="{{theme }}" (click)="switchTheme()">{{theme === "light-theme" ? "Switch to dark" : "Switch to light" }}</mat-slide-toggle>
+    <button *ngIf="!device" class="dark-mode-toggle">
+        <mat-slide-toggle matTooltip="{{theme }}" (click)="switchTheme()">{{theme === "light-theme" ? "Dark" : "
+            Light" }}</mat-slide-toggle>
 
     </button>
     <button class="menuForLogin" [matMenuTriggerFor]="menu" mat-icon-button aria-label="Example icon-button with a menu">
-        <mat-icon *ngIf="!authentication" id="dropdownIcon">more_vert</mat-icon>
-        <mat-icon *ngIf="authentication" id="dropdownIcon">account_circle</mat-icon>
+        <mat-icon *ngIf="!authentication && !device" id="dropdownIcon">more_vert</mat-icon>
+        <mat-icon *ngIf="authentication && !device" id="dropdownIcon">account_circle</mat-icon>
+        <mat-icon *ngIf="!authentication && device" id="device-dropdownIcon">more_vert</mat-icon>
+        <mat-icon *ngIf="authentication && device" id="device-dropdownIcon">account_circle</mat-icon>
 
     </button>
-
-    <mat-menu #menu="matMenu">
-        <button *ngIf="!authentication" mat-menu-item (click)="loggedIn()">
+    <div class="mat-menu">
+        <mat-menu #menu="matMenu">
+            <button *ngIf="!authentication" mat-menu-item (click)="loggedIn()">
           <mat-icon>email</mat-icon>
           <span>Email Password login</span>
         </button>
-        <button *ngIf="!authentication" mat-menu-item (click)="googleLogin()" role="button">
-          <mat-icon>voicemail</mat-icon>
+            <button *ngIf="!authentication" mat-menu-item (click)="googleLogin()" role="button">
+          <mat-icon style="font-size: 200%;margin-bottom: 5%;font-weight: bolder;">G</mat-icon>
           <span>Google Login</span>
         </button>
-        <button *ngIf="!authentication" mat-menu-item (click)="facebookLogin()">
-          <mat-icon>notifications_off</mat-icon>
+            <button *ngIf="!authentication" mat-menu-item (click)="facebookLogin()">
+          <mat-icon style="font-size: 200%;">facebook</mat-icon>
           <span>Facebook Login</span>
         </button>
-        <button *ngIf="authentication" mat-menu-item (click)="logout() ">
+            <button *ngIf="authentication" mat-menu-item (click)="logout() ">
             <mat-icon>email</mat-icon>
             <span>LogOut</span>
           </button>
-
-    </mat-menu>
-
-
-
+        </mat-menu>
+    </div>
     <mat-sidenav-container autosize="true" [ngClass]="sideNavClass" fullscreen *ngIf="!device">
         <mat-sidenav mode="side" opened [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen" #sidenav id="sidenav">
 
@@ -48,9 +48,11 @@
                     <div class="list-at-center" fxLayout="column" fxLayoutAlign="start start" *ngFor="let item of buttonSpecifications">
                         <div matTooltip="{{item.matTooltip}}" matTooltipPosition="right" id="icon-list" class="list-align" routerLinkActive="active" fxLayout="row" fxLayoutAlign="start start">
                             <div style="padding: 2%;">
-                                <mat-icon class="mat-list-icon" [routerLink]="[item.routerLink]">settings</mat-icon>
+                                <mat-icon class="mat-list-icon" [routerLink]="[item.routerLink]">{{item.button}}</mat-icon>
                             </div>
-                            <div class="list-tooltip" *ngIf="isMenuOpen" [routerLink]="[item.routerLink]">{{item.matTooltip}}</div>
+                            <div style="margin-left: 3%;
+                            font-size: 85%;
+                            margin-top: 2.5%;" *ngIf="isMenuOpen" [routerLink]="[item.routerLink]">{{item.matTooltip}}</div>
                         </div>
                     </div>
                 </div>
@@ -60,7 +62,7 @@
                             <div class="lists">
                                 <button mat-flat-button matTooltip="{{item.matTooltip}}" [routerLink]="[item.routerLink]" routerLinkActive="active" id="list" matTooltipPosition="right" aria-label="Button that shows a red tooltip">
                         <mat-icon id="sidenav-icon">settings</mat-icon>
-                        <span *ngIf="isMenuOpen" class="list-name">List 1</span>
+                        <!-- <span *ngIf="isMenuOpen" class="list-name">List 1</span> -->
                     </button></div>
                         </mat-list-item>
                     </div>
@@ -68,24 +70,66 @@
             </mat-list>
         </mat-sidenav>
 
-        <body>
-            <router-outlet></router-outlet>
+        <body style="overflow: auto !important; ">
+            <div *ngIf="wantToLogIn" style="  margin-top: 100px;
+            text-align: -webkit-center;">
+                <mat-card *ngIf="!device" class="box">
 
+                    <form>
+                        <mat-card-content>
+                            <mat-form-field style=" margin-top: 10px;
+                            width: 100%;">
+                                <input matInput placeholder="Email" type="email" id="email" name="email" [(ngModel)]="email">
+                            </mat-form-field>
 
+                            <mat-form-field style=" margin-top: 10px;
+                            width: 100%;">
+                                <input type="password" id="password" name="password" [(ngModel)]="password" matInput placeholder="Password">
+                            </mat-form-field>
+                        </mat-card-content>
+                        <button mat-stroked-button color="accent" type="button" (click)=" logInWithEmailPassword()">Log in</button>
+                        <button style="margin-left: 3%;" mat-stroked-button color="accent" (click)=" logInCancel()">Cancel</button>
 
+                    </form>
+                </mat-card>
+            </div>
+            <router-outlet *ngIf="! wantToLogIn"></router-outlet>
         </body>
 
     </mat-sidenav-container>
     <ngx-bottom-nav *ngIf="device" id="bottom-nav">
         <button ngx-bottom-nav [routerLink]="['/city-detail']" routerLinkActive="active" class="icon1">
-        <mat-icon class="icon" ngxBottomNavIcon>home</mat-icon>
+        <mat-icon class="icon" ngxBottomNavIcon>wb_cloudy</mat-icon>
       </button>
         <button ngx-bottom-nav [routerLink]="['/location']" routerLinkActive="active" class="icon1">
-        <mat-icon class="icon" ngxBottomNavIcon>search</mat-icon>
+        <mat-icon class="icon" ngxBottomNavIcon>location_city</mat-icon>
       </button>
-        <button ngx-bottom-nav [routerLink]="['/login']" routerLinkActive="active" class="icon1">
-        <mat-icon class="icon" ngxBottomNavIcon>forum</mat-icon>
+        <button ngx-bottom-nav [routerLink]="['/pollution_components']" routerLinkActive="active" class="icon1">
+        <mat-icon class="icon" ngxBottomNavIcon>local_florist</mat-icon>
       </button>
     </ngx-bottom-nav>
+    <div *ngIf="device" class="login-form-for-device">
+        <div *ngIf="wantToLogIn" style="  margin-top: 100px;
+    text-align: -webkit-center;">
+            <mat-card class="box">
 
+                <form>
+                    <mat-card-content>
+                        <mat-form-field style=" margin-top: 10px;
+                    width: 100%;">
+                            <input matInput placeholder="Email" type="email" id="email" name="email" [(ngModel)]="email">
+                        </mat-form-field>
+
+                        <mat-form-field style=" margin-top: 10px;
+                    width: 100%;">
+                            <input type="password" id="password" name="password" [(ngModel)]="password" matInput placeholder="Password">
+                        </mat-form-field>
+                    </mat-card-content>
+                    <button mat-stroked-button color="accent" type="button" (click)=" logInWithEmailPassword()">Log in</button>
+                    <button style="margin-left: 3%;" mat-stroked-button color="accent" (click)=" logInCancel()">Cancel</button>
+
+                </form>
+            </mat-card>
+        </div>
+    </div>
     <ngx-spinner></ngx-spinner>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { GetDataService } from '../services/get-data.service';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
@@ -10,18 +10,30 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './show-details.component.html',
   styleUrls: ['./show-details.component.css']
 })
-export class ShowDetailsComponent implements OnInit{
+export class ShowDetailsComponent implements OnInit, OnChanges{
   b=['a', 'c','d']
   cityData;
-  cityBasicInfo;
+  cityBasicInfo;observer;isDevice;
   constructor(private db: AngularFireDatabase,
     private dbService: NgxIndexedDBService, private getData: GetDataService,private spinner: NgxSpinnerService,
     private database: AngularFireDatabase, private route: Router) {
       this.spinner.show();
-    this.dbService.getAll('cities').subscribe((cities) => {
-      this.cityData = cities;
-      console.log(cities)
-      if (cities.length != 0) {
+    // this.dbService.getAll('cities').subscribe((cities) => {
+    //   this.observer=new Observable(Subscriber=>{
+    //     setTimeout(() => {
+    //       Subscriber.next(cities);
+    //     }, 0);
+    //   })
+    //   this.observer.subscribe(ab=>{
+    //     console.log(ab);
+      
+    //   this.cityData = ab;
+    //   console.log(cities)
+    getData.sendCitiesFromTable().subscribe(a=>{
+      this.cityData=a;
+      console.log(this.cityData)
+
+      if (this.cityData.length != 0) {
         this.database.list('cityData').valueChanges().subscribe(data => {
           this.cityBasicInfo = data;
           console.log(this.cityBasicInfo);
@@ -43,7 +55,7 @@ export class ShowDetailsComponent implements OnInit{
       else {
         this.database.list('cityData').valueChanges().subscribe(data => {
           this.cityBasicInfo = data;
-          console.log(this.cityBasicInfo)
+    //      console.log(this.cityBasicInfo)
           for (let i = 0; i < 15; i++) {
             this.dbService
               .add('cities', {
@@ -55,18 +67,27 @@ export class ShowDetailsComponent implements OnInit{
 
               })
               .subscribe((storeData) => {
-                console.log('storeData: ', storeData);
+         //       console.log('storeData: ', storeData);
               });
           }
         })
       }
       console.log(this.cityData);
       this.spinner.hide();
+     })
 
+  }
+  ngOnInit() { 
+  
+  }
+  ngOnChanges(){
+    this.observer.subscribe(ab=>{
+      console.log(ab);
+    
+    this.cityData = ab;
     });
 
   }
-  ngOnInit() { }
   onClick(i) {
     this.route.navigate(['../', i])
   }

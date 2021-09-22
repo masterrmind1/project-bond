@@ -43,6 +43,7 @@ import { PollutantNH3Component } from './pollutant-nh3/pollutant-nh3.component';
 import { PollutantSO2Component } from './pollutant-so2/pollutant-so2.component';
 import { PollutantOZONEComponent } from './pollutant-ozone/pollutant-ozone.component';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const dbConfig: DBConfig = {
   name: 'MyDb',
@@ -102,7 +103,9 @@ const dbConfig: DBConfig = {
     WeatherDetailComponent,
     CitiesListComponent,
     AreasInCityComponent,
-    PollutionDataComponent, PollutantCOComponent, PollutantNO2Component, FineParticulateMatterComponent,PollutantNH3Component, PollutantSO2Component, PollutantOZONEComponent
+    PollutionDataComponent, PollutantCOComponent,
+     PollutantNO2Component, FineParticulateMatterComponent
+     ,PollutantNH3Component, PollutantSO2Component, PollutantOZONEComponent
   ],
   imports: [
     BrowserModule, FormsModule, NgxIndexedDBModule.forRoot(dbConfig), MatAutocompleteModule, ReactiveFormsModule,
@@ -112,7 +115,7 @@ const dbConfig: DBConfig = {
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),MatExpansionModule,
-    BrowserAnimationsModule, HttpClientModule,    NgDarkmodeModule,
+    BrowserAnimationsModule, HttpClientModule,    NgDarkmodeModule,MatDialogModule,
     MatToolbarModule,
     MatTooltipModule,NgxSpinnerModule,AngularFireStorageModule,MatMenuModule,
     MatInputModule,
@@ -125,7 +128,9 @@ const dbConfig: DBConfig = {
     MatListModule,BottomNavModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // entryComponents:[dialogConfig]
+
 })
 export class AppModule { }
 

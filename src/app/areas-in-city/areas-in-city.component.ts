@@ -106,7 +106,7 @@ export class AreasInCityComponent implements OnInit, OnChanges {
         console.log(data)
         this.pollutionOfArea = data
         this.areaName = Object.keys(this.pollutionOfArea)
-        console.log(data);
+        console.log(this.nameOfCity);
 
         this.dbService.getAllByIndex('bookmarkData', 'city_name', this.nameOfCity).subscribe((bookmarkData) => {
           console.log(bookmarkData);
@@ -121,7 +121,10 @@ export class AreasInCityComponent implements OnInit, OnChanges {
             }
           }
           console.log(this.bookmarkedArea)
-          if (!this.bookmarkedArea.includes(item)) {
+          this.dbService.getAll('bookmarkData').subscribe((bookmarkAll) => {
+         
+            console.log(bookmarkAll)
+          if (!this.bookmarkedArea.includes(item) && bookmarkAll.length<=5) {
             this.dbService
               .add('bookmarkData', {
                 state_name: this.stateName,
@@ -136,6 +139,9 @@ export class AreasInCityComponent implements OnInit, OnChanges {
                 console.log(error);
               });
 
+          }else{
+            alert('You can add only five places as Bookmark');
+
           }
           console.log(this.bookmarkedArea);
           console.log(this.bookmarkedArea.includes(item));
@@ -148,8 +154,26 @@ export class AreasInCityComponent implements OnInit, OnChanges {
           //  keys.forEach((key, i) => result[key] = values[i]);
           console.log(this.boolianForAreas[item]);
 
+  
+          for (let i = 0; i < bookmarkData.length; i++) {
+            if (!this.bookmarkedArea.includes(bookmarkData[i].area_name)) {
+              this.bookmarkedArea.push(bookmarkData[i].area_name)
+              console.log(bookmarkData[i].area_name)
+              
+  
+            }
+          }
+          
+          if (this.areaName) {
+  
+            this.areaName.map((val, idx) => { this.boolianForAreas[val] = this.bookmarkedArea.includes(this.areaName[idx]) });
+          }
+          //  this.boolianForAreas
+          //  keys.forEach((key, i) => result[key] = values[i]);
+          console.log(this.boolianForAreas);
+  
         });
-
+      });
       });
 
   }

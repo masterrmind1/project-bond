@@ -105,7 +105,7 @@ export class WeatherDetailComponent implements OnInit {
               if (weatherDetail.length < 3) {
                 this.dbService
                   .add('citiesData', {
-                    cityName: "City Name",
+                    cityName: "Current Location",
                     feels_like: Totaldata.current.feels_like,
                     humidity: Totaldata.current.humidity,
                     pressure: Totaldata.current.pressure,
@@ -130,7 +130,7 @@ export class WeatherDetailComponent implements OnInit {
                 }
                 this.dbService
                   .add('citiesData', {
-                    cityName: "City Name",
+                    cityName: "Current Location",
                     feels_like: Totaldata.current.feels_like,
                     humidity: Totaldata.current.humidity,
                     pressure: Totaldata.current.pressure,

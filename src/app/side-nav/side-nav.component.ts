@@ -7,6 +7,7 @@ import firebase from 'firebase/app';
 import { userInfo } from '../user.module';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthenticateService } from '../services/authenticate.service';
+import { GetDataService } from '../services/get-data.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -14,7 +15,7 @@ import { AuthenticateService } from '../services/authenticate.service';
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements OnInit {
-  color: ThemePalette = 'primary';
+  color: ThemePalette = 'primary';wantToLogIn=false;
   theme: Theme = 'light-theme';
   email: string;
   name: string;
@@ -28,24 +29,28 @@ export class SideNavComponent implements OnInit {
   menu;
   isMobile: boolean;
   buttonSpecifications=[
-    {matTooltip:   'List1',
-    routerLink:'/city-detail' },
-    {matTooltip: "List2",
-    routerLink:'/location' },
+    {matTooltip:   'Weather',
+    routerLink:'/city-detail',
+  button:'wb_cloudy' },
+    {matTooltip: "Pollution",
+    routerLink:'/location',
+    button:'location_city' },
     {matTooltip: "List3",
-    routerLink:'/login' }
+    routerLink:'/pollution_components',
+    button:'local_florist' }
   ];
   addData=false;
 
   buttonforDevice=[
     { routerLink:'/city-detail',icon:'home'}, { routerLink:'/location',icon:'search'}, 
-    { routerLink:'/login',icon:'forum'}  ]
+    { routerLink:'/pollution_components',icon:'forum'}  ]
   constructor(private deviceService: DeviceDetectorService, private auth: AngularFireAuth, private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document,private spinner: NgxSpinnerService,
+    @Inject(DOCUMENT) private document: Document,private spinner: NgxSpinnerService, private getDataService:GetDataService,
     private authService:AuthenticateService) {
     this.device = this.deviceService.getDeviceInfo();
     this.isMobile = this.deviceService.isMobile();
     this.device = this.isMobile;
+      this.getDataService.knowIfDevice(this.isMobile);
     console.log(this.isMobile);
     this.spinner.show();
     this.user=JSON.parse(localStorage.getItem('user'));
@@ -81,15 +86,26 @@ export class SideNavComponent implements OnInit {
     this.authService.loginFacebook();
     this.spinner.hide();
   }
-  loggedIn() {
+  loggedIn(){
+    this.wantToLogIn=true;
+  }
+  logInWithEmailPassword() {
     this.addData=true;
+    
     this.spinner.show();
+
+    
     this.auth.createUserWithEmailAndPassword(this.email, this.password)
       .then((userInformation) => {
+        console.log('You are Successfully signed up!', userInformation);
 
-      });
+      }).catch(error => {
+        console.log('Something is wrong:', error.message);
+        });
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
+        this.authentication = true;
+
         localStorage.setItem('user', JSON.stringify(user))
         this.user=JSON.parse(localStorage.getItem('user'));
         this.authentication = !!this.user.email || !!this.user.displayName;
@@ -102,14 +118,27 @@ export class SideNavComponent implements OnInit {
         console.log(this.name);
       }
     });
+    this.wantToLogIn=false;
+
     this.spinner.hide();
   }
+  logInCancel(){
+        this.wantToLogIn=false;
+        this.authentication = false;
 
+  }
   
   logout() {
     this.spinner.show();
- 
+   this.authService.logOut();
     this.authentication = false;
+
+    // firebase.auth().signOut().then(function() {
+    //   console.log("sign out");
+      
+    //  }).catch(function(error) {
+    //   console.log(error);
+    //  });
     this.spinner.hide();
 
   }

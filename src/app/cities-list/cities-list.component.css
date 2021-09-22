@@ -28,3 +28,21 @@ mat-card {
     margin-top: 3%;
     text-align: center;
 }
+
+@media screen and (min-width: 500px) and (max-width: 700px) {
+    .wrapper {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 499px) {
+    .wrapper {
+        width: 130%;
+    }
+}
+
+@media screen and (min-width: 100px) and (max-width: 399px) {
+    .wrapper {
+        width: 250%;
+    }
+}

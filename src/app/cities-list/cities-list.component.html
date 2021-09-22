@@ -1,11 +1,16 @@
-<div id="card-container">
-    <div class="wrapper" *ngFor="let item of citiesName; let i=index">
-        <mat-card class="card" (click)="getDetails(item)">
+<body>
+    <div style="margin-bottom: 40%;">
 
-            <h2 style="cursor: pointer">{{item}}</h2>
-        </mat-card>
+        <div id="card-container">
+            <div class="wrapper" *ngFor="let item of citiesName; let i=index">
+                <mat-card class="card" (click)="getDetails(item)">
+
+                    <h2 style="cursor: pointer">{{item}}</h2>
+                </mat-card>
+            </div>
+        </div>
+
+        <button class="back-button" mat-flat-button color="accent" [routerLink]="['../']">Back</button>
+        <ngx-spinner></ngx-spinner>
     </div>
-</div>
-
-<button class="back-button" mat-flat-button color="accent" [routerLink]="['../']">Back</button>
-<ngx-spinner></ngx-spinner>
+</body>

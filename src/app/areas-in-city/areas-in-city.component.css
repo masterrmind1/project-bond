@@ -3,7 +3,7 @@
         box-shadow: 0px 2px 11px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
         display: flex;
         flex-flow: row wrap;
-        z-index: 0;
+        /* z-index: 0; */
         position: relative;
     }
     
@@ -37,6 +37,33 @@
         overflow: hidden;
     }
     
+    @media screen and (min-width: 600px) and (max-width: 799px) {
+        .wrapper {
+            width: 50%;
+        }
+        .bookmark-icon {
+            margin-left: 80% !important;
+        }
+    }
+    
+    @media screen and (min-width: 400px) and (max-width: 599px) {
+        .wrapper {
+            width: 70%;
+        }
+        .bookmark-icon {
+            margin-left: 70% !important;
+        }
+    }
+    
+    @media screen and (min-width: 200px) and (max-width: 399px) {
+        .wrapper {
+            width: 90%;
+        }
+        .bookmark-icon {
+            margin-left: 80% !important;
+        }
+    }
+    
     .back-button {
         margin: 5%;
     }
@@ -52,8 +79,7 @@
         }
     }
      */
-    
-    @media screen and (min-width: 600px) and (max-width: 700px) {
+    /* @media screen and (min-width: 600px) and (max-width: 700px) {
         .bookmark-icon {
             margin-left: 15% !important;
             position: absolute;
@@ -65,4 +91,4 @@
             margin-left: 15% !important;
             position: absolute;
         }
-    }
+    } */

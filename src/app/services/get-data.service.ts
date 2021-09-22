@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators'
 import { Observable, pipe } from 'rxjs';
 import { CityData } from '../city-data';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
 
 @Injectable({
   providedIn: 'root'
@@ -23,14 +24,18 @@ states={'Andhra Pradesh':[1,8,15,22],'Arunachal Pradesh':[29], 'Assam':[36], 'Bi
 'Delhi':[130],'Jammu and Kashmir':[652],'Puducherry':[1254]
 };
 state=['Assam','Bihar', 'Gujarat','Maharashtra'];
-cityState;cityName;areaOfCity;
-  constructor( private http: HttpClient, private db: AngularFireDatabase) { }
-  getData(id){
-this.index=id;
-  }
-  sendData(){
-     return Object.keys(this.states);
-}
+cityState;cityName;areaOfCity;cityData;cities;
+isDevice;
+  constructor( private http: HttpClient, private db: AngularFireDatabase,
+    private dbService: NgxIndexedDBService) {
+      
+     }
+//   getData(id){
+// this.index=id;
+//   }
+//   sendData(){
+//      return Object.keys(this.states);
+// }
 sendState(){
   return this.states;
 }
@@ -59,5 +64,16 @@ this.areaOfCity=area;
 }
 sendAreaName(){
   return this.areaOfCity
+}
+
+sendCitiesFromTable(){
+ return this.dbService.getAll('cities');
+
+}
+knowIfDevice(isDevice){
+this.isDevice=isDevice;
+}
+sendDeviceInfo(){
+  return this.isDevice;
 }
 }

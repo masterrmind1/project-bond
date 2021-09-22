@@ -1,17 +1,20 @@
-<h1 style="font-size: 200%;margin: 1.2%;">Select city</h1>
-<div id="card-container">
-    <div class="wrapper" *ngFor="let item of cityData;let i=index">
-        <mat-card class="short" (click)="onClick(i)">
-            <h5>{{item.cityName}}</h5>
-        </mat-card>
+<body>
+    <div>
+        <h1 style="font-size: 200%;margin: 1.2%;">Select city</h1>
+        <div id="card-container">
+            <div class="wrapper" *ngFor="let item of cityData;let i=index">
+                <mat-card class="short" (click)="onClick(i)">
+                    <h5>{{item.cityName }}</h5>
+                </mat-card>
+            </div>
+            <div class="wrapper">
+
+                <mat-card class="short" (click)="onClick(15)">
+                    <h5>Current Weather Details</h5>
+                </mat-card>
+            </div>
+
+        </div>
     </div>
-    <div class="wrapper">
-
-        <mat-card class="short" (click)="onClick(15)">
-            <h5>Current Weather Details</h5>
-        </mat-card>
-    </div>
-
-</div>
-
-<ngx-spinner></ngx-spinner>
+    <ngx-spinner></ngx-spinner>
+</body>

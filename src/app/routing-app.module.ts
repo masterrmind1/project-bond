@@ -18,19 +18,19 @@ import { PollutantSO2Component } from './pollutant-so2/pollutant-so2.component';
 
 const appRoute:Routes=[
   // {path:' ', component:SideNavComponent},
-  {path:'login', component: LoginPageComponent},
+  {path:'pollution_components', component: LoginPageComponent},
   {path:'location', component:GetLocationComponent},
   {path:'city-detail', component:ShowDetailsComponent},
   {path:':id', component:WeatherDetailComponent},
   {path:'location/:state', component:CitiesListComponent},
   {path:'location/:city/areas', component:AreasInCityComponent},
   {path:'location/:city/areas/:number', component:PollutionDataComponent},
-  {path:'login/fine-particles', component:FineParticulateMatterComponent},
-  {path: 'login/NO2',component:PollutantNO2Component},
-  {path: 'login/NH3',component:PollutantNH3Component},
-  {path: 'login/CO',component:PollutantCOComponent},
-  {path: 'login/OZONE',component:PollutantOZONEComponent},
-  {path: 'login/SO2',component:PollutantSO2Component},
+  {path:'pollution_components/fine-particles', component:FineParticulateMatterComponent},
+  {path: 'pollution_components/NO2',component:PollutantNO2Component},
+  {path: 'pollution_components/NH3',component:PollutantNH3Component},
+  {path: 'pollution_components/CO',component:PollutantCOComponent},
+  {path: 'pollution_components/OZONE',component:PollutantOZONEComponent},
+  {path: 'pollution_components/SO2',component:PollutantSO2Component},
   {path:'location/:city/areas/:number/pollutionInfo', component:LoginPageComponent}
 
 

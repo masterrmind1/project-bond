@@ -19,7 +19,7 @@ import { data } from 'jquery';
 export class GetLocationComponent implements OnInit {
   myControl = new FormControl(''); array = []; pollutionData; states;
   allStates: string[] = []; stateKey = {}; pollutionOfArea;areaNames={};areaName=[];cityName=[]
-  filteredOptions: Observable<string[]>; id;Data;
+  filteredOptions: Observable<string[]>; id;Data;showBookmarks=false;
   constructor(private dataService: GetDataService, private database: AngularFireDatabase,private spinner: NgxSpinnerService,
     private router: Router, private http: HttpClient,  private dbService: NgxIndexedDBService) {
     this.allStates = dataService.sendStateArrey();
@@ -27,19 +27,6 @@ export class GetLocationComponent implements OnInit {
     // this.callAPI();
 
    
-      this.dbService.getAll('bookmarkData').subscribe((bookmarkData) => {
-        console.log(bookmarkData);
-this.Data=bookmarkData
-        for(let a=0; a< bookmarkData.length; a++){
-          this.areaName.push(bookmarkData[a].area_name)
-        this.cityName.push(bookmarkData[a].city_name);
-        this.areaNames[ bookmarkData[a].city_name ] = bookmarkData[a].area_name;
-
-        }
-        // this.cityName.map((val, idx) => { this.areaNames[val] = this.areaName });
-
-        console.log(this.areaNames)
-      });
   }
 
   ngOnInit() {
@@ -49,9 +36,30 @@ this.Data=bookmarkData
       map(value => this._filter(value))
     );
   }
+bookmarks(){
+  this.showBookmarks=!this.showBookmarks;
+  this.dbService.getAll('bookmarkData').subscribe((bookmarkData) => {
+    console.log(bookmarkData);
+this.Data=bookmarkData
+    for(let a=0; a< bookmarkData.length; a++){
+      if (!this.areaName.includes(bookmarkData[a].area_name)) {
+        this.areaName.push(bookmarkData[a].area_name)
+    this.cityName.push(bookmarkData[a].city_name);
+    this.areaNames[ bookmarkData[a].city_name ] = bookmarkData[a].area_name;
+      }
+    }
+    // this.cityName.map((val, idx) => { this.areaNames[val] = this.areaName });
 
+    console.log(this.areaName)
+  });
+}
   followBookmark(i, item){
-    // this.router.navigate(['location/', this.nameOfCity, 'areas', i])
+    this.dbService.getAllByIndex('bookmarkData', 'area_name', item).subscribe((bookmarkData) => {
+      console.log(bookmarkData);
+          this.router.navigate(['location/', bookmarkData[0].city_name, 'areas',  bookmarkData[0].area_id])
+
+    })
+
 
   }
   private _filter(value: string): string[] {
