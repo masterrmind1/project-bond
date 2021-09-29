@@ -70,14 +70,14 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
  ## installation
   Install node modules npm i
 ## screenShots
-  ## Light Mode
+  # Light Mode
   
   Desktop             |  Device
 :-------------------------:|:-------------------------:
 ![images (1)](https://user-images.githubusercontent.com/85214168/135258132-9b238c9e-a195-4f1b-96e4-1699bf6247cc.png)   | ![images (1)_3](https://user-images.githubusercontent.com/85214168/135257683-4e2e3186-7f76-4b74-9c79-1ef04a5a06d5.png)
 
   
-  ## Dark Mode
+  # Dark Mode
   
     Desktop             |  Device
 :-------------------------:|:-------------------------:
