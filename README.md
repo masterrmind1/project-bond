@@ -37,7 +37,7 @@ will take you the place where you can have Pollution data of that place in card 
   
 ## Highlights
 - Use[ OpenWeatherMap](https://openweathermap.org/) API
-- use[ government ] (https://api.data.gov/) API
+-  Use[ Government](https://api.data.gov/) API
 - Use Material Design 2
 - Dark Mode
 - Support one language -English
