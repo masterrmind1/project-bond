@@ -72,13 +72,17 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
 ## screenShots
   ## Light Mode
   
-  Solarized dark             |  Solarized Ocean
+  Desktop             |  Device
 :-------------------------:|:-------------------------:
 ![images (1)](https://user-images.githubusercontent.com/85214168/135258132-9b238c9e-a195-4f1b-96e4-1699bf6247cc.png)   | ![images (1)_3](https://user-images.githubusercontent.com/85214168/135257683-4e2e3186-7f76-4b74-9c79-1ef04a5a06d5.png)
 
   
   ## Dark Mode
-![images (1)_2](https://user-images.githubusercontent.com/85214168/135259013-53c13517-6339-481f-a380-6b981460ffc8.png) | ![images (1)_3](https://user-images.githubusercontent.com/85214168/135259227-5d471933-dc4f-431f-87ea-ef5593e9d940.png)
+  
+    Desktop             |  Device
+:-------------------------:|:-------------------------:
+![images (1)_2](https://user-images.githubusercontent.com/85214168/135259013-53c13517-6339-481f-a380-6b981460ffc8.png)  | ![images (1)_3](https://user-images.githubusercontent.com/85214168/135259227-5d471933-dc4f-431f-87ea-ef5593e9d940.png)
+
 
 
 ## Ready to use with following libraries
