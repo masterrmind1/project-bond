@@ -16,6 +16,7 @@
    -  Important Link
    -  screenShot's
    -  installation
+   -  Icon
    - Architecture
 
 
@@ -68,13 +69,16 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
 
  ## installation
   Install node modules npm i
-## screenShot
+## screenShots
+![images (1)](https://user-images.githubusercontent.com/85214168/135256721-4df1e59d-f116-4bc9-9190-86dd5e458544.png)
+![images (1)_3](https://user-images.githubusercontent.com/85214168/135257683-4e2e3186-7f76-4b74-9c79-1ef04a5a06d5.png)
+
+
 
 ## Ready to use with following libraries
   - flex-layout 12.0.0-beta.34
   - Angular material 12.2.0
   - ngx-indexed-db 6.1.2
-## Architecture
+## Icon
  ![maya](https://user-images.githubusercontent.com/85214168/135255436-c2298d3d-9d0b-4083-8a2a-6a52a61dc807.png)
 
-# project-bond
