@@ -81,10 +81,7 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
   ### Dark Mode
   
 
-    Desktop             |  Device
-:-------------------------:|:-------------------------:
-![images (1)__2](https://user-images.githubusercontent.com/85214168/135260355-0dec2a7f-4461-4a9b-9fc3-8cd138dcf0d4.png)  | ![images (1)_3_2](https://user-images.githubusercontent.com/85214168/135260376-e1d3535e-88a6-41b0-9686-773e0830cff4.png)
-
+ 
 
 
 ## Ready to use with following libraries
