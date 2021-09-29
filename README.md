@@ -30,7 +30,8 @@ The name if the app  'weather vision' indicates main idea , that is to allow use
 
   ##  How to handle locally
 1. For weather detail's you can enter in weather detail component by clicking weather button from side navigation bar in desktop or in bottom navigation bar in device, there you can select place.On clicking on card of perticular city you will reach to weather detail's of that city,it is consist of consist of expansion pannel where you can find last three histories of that city with time of last visit.
-2. For Pollution detail's you can enter in Pollution Detail component by clicking on Pollution Button from list, there you should select the state of city in whicht that area is located or you can directly enter into pollution details of perticular area if you have already bookmarked that area earlier. Otherwise you need to select city of that state and and finally select area of that selected city. this steps will take you the place where you can have Pollution data of that place in card view. you can bookmark perticular areas of city by clicking on sign of bookmark given on card of area of city.
+2. For Pollution detail's you can enter in Pollution Detail component by clicking on Pollution Button from list, there you should select the state of city in whicht that area is located or you can directly enter into pollution details of perticular area if you have already bookmarked that area earlier. Otherwise you need to select city of that state and and finally select area of that selected city. this steps
+will take you the place where you can have Pollution data of that place in card view. you can bookmark perticular areas of city by clicking on sign of bookmark given on card of area of city.
 3. at pollution Detail component you can find Help button at top right corner which will help you to understand more about all the pollution elements, their sources of production and effect of that pollutants on human body.
   
 ## Highlights
@@ -74,6 +75,6 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
   - Angular material 12.2.0
   - ngx-indexed-db 6.1.2
 ## Architecture
-
+ ![maya](https://user-images.githubusercontent.com/85214168/135255436-c2298d3d-9d0b-4083-8a2a-6a52a61dc807.png)
 
 # project-bond
