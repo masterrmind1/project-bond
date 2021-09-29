@@ -1,6 +1,6 @@
 # Weather Vision (PWA)
 
-     A flexible tool to check the weather details of current location as well as that of the different areas of all the cities in india,
+     A flexible responsive web app to check the weather details of current location as well as that of the different areas of all the cities in india,
      also check pollution status of different areas of diferent cities.
   
 ## Table of Contents
