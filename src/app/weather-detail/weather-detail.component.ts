@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./weather-detail.component.css']
 })
 export class WeatherDetailComponent implements OnInit {
-
+  WeatherData:any;
   allCitiesFromTable = []; index; current: weather_detail; old: weather_detail;
   second_old: weather_detail; lat; long;
   constructor(private dbService: NgxIndexedDBService, private spinner: NgxSpinnerService,
@@ -31,10 +31,15 @@ export class WeatherDetailComponent implements OnInit {
     console.log(moment(new Date()).format('YYYY-MM-DD HH:mm:ss'));
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.WeatherData = {
+      main : {},
+      isDay: true
+    };
+    console.log(this.WeatherData);
+   }
   getWeatherData(cityData, i) {
     this.spinner.show();
-
     if (i < 15) {
       fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityData[i].cityName + '&appid=9ce2eb4084172fcd1a624bcf954f8222')
         .then(response => response.json())
@@ -85,8 +90,9 @@ export class WeatherDetailComponent implements OnInit {
                 });
             }
           });
+          this.setWeatherData(i, Totaldata);
+
         });
-      this.setWeatherData(i);
 
     }
     if (i == 15) {
@@ -147,18 +153,28 @@ export class WeatherDetailComponent implements OnInit {
                   });
               }
             });
+            this.setWeatherData(i, Totaldata);
 
           })
+
       })
-      this.setWeatherData(i);
       this.spinner.hide();
 
     }
   }
 
 
-  setWeatherData(i) {
+  setWeatherData(i, data) {
     this.spinner.show();
+this.WeatherData=data
+console.log(this.WeatherData);
+
+ let sunsetTime = new Date(this.WeatherData.sys.sunset * 1000);
+ this.WeatherData.sunset_time = sunsetTime.toLocaleTimeString();
+ console.log(this.WeatherData.sunset_time)
+ let currentDate = new Date();
+ console.log(currentDate)
+ this.WeatherData.isDay = (currentDate.getTime() < sunsetTime.getTime());
 
     this.dbService.getAllByIndex('citiesData', 'cityID', i).subscribe((weatherDetail) => {
       let a: any = weatherDetail;

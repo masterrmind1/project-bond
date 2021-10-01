@@ -11,5 +11,4 @@ export class PollutantCOComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

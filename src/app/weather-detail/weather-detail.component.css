@@ -2,45 +2,103 @@
     display: block;
     margin: 0 auto;
     width: fit-content;
+    color: white;
 }
 
 .mat-form-field+.mat-form-field {
     margin-left: 8px;
 }
 
+mat-panel-description,
+mat-panel-title {
+    color: rgb(209, 241, 30);
+    z-index: 10;
+}
+
+mat-expansion-panel-header {
+    height: 2%;
+    z-index: 5;
+}
+
 mat-expansion-panel {
+    z-index: 1;
     margin-top: 2%;
-    background-color: rgb(236, 132, 132);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(8, 7, 42, 1) 75%, rgb(8, 10, 63) 100%);
     width: 80%;
     margin-left: 10%;
+    padding: 3%;
+    height: 20%;
 }
 
 .temp {
     font-size: 32px;
-    margin-top: 3px;
+    margin-bottom: 2% !important;
+    margin-top: 2% !important;
 }
 
 .avg-temp {
     font-size: 100%;
-    margin-top: 2%;
+    margin-bottom: 2% !important;
 }
 
 .feels-like {
     font-size: 100%;
+    margin-bottom: 2% !important;
 }
 
 .humidity {
     font-size: 100%;
-    margin-top: 2%;
+    margin-bottom: 2% !important;
 }
 
 .city-name {
     font-size: 250%;
-    margin-top: 10px;
-    font-weight: bold;
+    margin-bottom: 2% !important;
+    /* font-weight: bold; */
 }
 
 .time {
     font-size: 12px;
-    font-weight: bold;
+    /* font-weight: bold; */
+}
+
+.weatherWidgetRow {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.sun {
+    margin-top: 10px;
+    color: yellow;
+    filter: drop-shadow( 1px 1px 10px yellow);
+}
+
+.moon {
+    margin-top: 10px;
+    color: white;
+    filter: drop-shadow( 1px 1px 10px white);
+}
+
+.cloudDiv {
+    margin-top: -40px;
+}
+
+.cloud {
+    color: rgb(104, 175, 197);
+    filter: drop-shadow( 1px 1px 5px rgb(104, 175, 197));
+    animation-name: cloudMovement;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+@keyframes cloudMovement {
+    from {
+        margin-left: -55px;
+    }
+    to {
+        margin-left: 65px;
+    }
 }

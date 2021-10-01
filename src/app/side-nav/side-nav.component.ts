@@ -35,7 +35,7 @@ export class SideNavComponent implements OnInit {
     {matTooltip: "Pollution",
     routerLink:'/location',
     button:'location_city' },
-    {matTooltip: "List3",
+    {matTooltip: "Info",
     routerLink:'/pollution_components',
     button:'local_florist' }
   ];

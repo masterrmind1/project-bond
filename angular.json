@@ -28,7 +28,8 @@
                             "src/styles.css"
                         ],
                         "scripts": [
-                            "./node_modules/angular-dark-mode/angular-dark-mode.js"
+                            "./node_modules/angular-dark-mode/angular-dark-mode.js",
+                            "src/fontawesom/all.js"
                         ],
                         "serviceWorker": true,
                         "ngswConfigPath": "ngsw-config.json"

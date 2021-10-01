@@ -18,6 +18,7 @@ import { PollutantSO2Component } from './pollutant-so2/pollutant-so2.component';
 
 const appRoute:Routes=[
   // {path:' ', component:SideNavComponent},
+  { path: '', redirectTo: 'city-detail', pathMatch: 'full' },
   {path:'pollution_components', component: LoginPageComponent},
   {path:'location', component:GetLocationComponent},
   {path:'city-detail', component:ShowDetailsComponent},

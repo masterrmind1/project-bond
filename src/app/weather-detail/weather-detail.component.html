@@ -1,6 +1,6 @@
 <body>
-    <div style="margin-top: 3%;   margin-bottom: 40%;
-    ">
+
+    <div style="margin-top: 3%;   margin-bottom: 40%; ">
         <mat-accordion *ngIf="current && current.cityName.length > 0">
             <mat-expansion-panel [expanded]=true>
                 <mat-expansion-panel-header>
@@ -9,9 +9,20 @@
                         weather Detail of {{current.time}}
                     </mat-panel-description>
                 </mat-expansion-panel-header>
-                <div class="weatherWidgetRow temp">{{current.temp}}°</div>
-                <div class="weatherWidgetRow avg-temp">{{current.temp_min}}° / {{current.temp_max}}°</div>
-                <div class="weatherWidgetRow feels-like">Feels Like: {{current.feels_like}}°</div>
+
+                <div style="text-align: left;color: #fff;">
+                    <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
+                        <i class="fas fa-3x fa-sun sun"></i></div>
+                    <div *ngIf="!WeatherData.isDay" class="weatherWidgetRow">
+                        <i class="fas fa-3x fa-moon moon"></i>
+                    </div>
+                    <div class="weatherWidgetRow cloudDiv">
+                        <i class="fas fa-cloud fa-3x cloud"></i>
+                    </div>
+                </div>
+                <div class="weatherWidgetRow temp">{{(current.temp-275.15).toFixed(2)}}°</div>
+                <div class="weatherWidgetRow avg-temp">{{(current.temp_min -275.15).toFixed(2)}}° / {{(current.temp_max -275.15).toFixed(2)}}°</div>
+                <div class="weatherWidgetRow feels-like">Feels Like: {{(current.feels_like -275.15).toFixed(2)}}°</div>
                 <div class="weatherWidgetRow city-name">{{current.cityName}}</div>
                 <div class="weatherWidgetRow humidity">Humidity: {{current.humidity}}%</div>
                 <div class="weatherWidgetRow time">Weather Detail at : {{current.time}}%</div>
@@ -25,9 +36,9 @@
                         weather Detail of {{old.time}}
                     </mat-panel-description>
                 </mat-expansion-panel-header>
-                <div class="weatherWidgetRow temp">{{old.temp}}°</div>
-                <div class="weatherWidgetRow avg-temp">{{old.temp_min}}° / {{old.temp_max}}°</div>
-                <div class="weatherWidgetRow feels-like">Feels Like: {{old.feels_like}}°</div>
+                <div class="weatherWidgetRow temp">{{(old.temp-275.15).toFixed(2)}}°</div>
+                <div class="weatherWidgetRow avg-temp">{{(old.temp_min-275.15).toFixed(2)}}° / {{(old.temp_max-275.15).toFixed(2)}}°</div>
+                <div class="weatherWidgetRow feels-like">Feels Like: {{(old.feels_like-275.15).toFixed(2)}}°</div>
                 <div class="weatherWidgetRow city-name">{{old.cityName}}</div>
                 <div class="weatherWidgetRow humidity">Humidity: {{old.humidity}}%</div>
                 <div class="weatherWidgetRow time">Weather Detail at : {{old.time}}%</div>
@@ -40,9 +51,9 @@
                         weather Detail of {{second_old.time}}
                     </mat-panel-description>
                 </mat-expansion-panel-header>
-                <div class="weatherWidgetRow temp">{{second_old.temp}}°</div>
-                <div class="weatherWidgetRow avg-temp">{{second_old.temp_min}}° / {{second_old.temp_max}}°</div>
-                <div class="weatherWidgetRow feels-like">Feels Like: {{second_old.feels_like}}°</div>
+                <div class="weatherWidgetRow temp">{{(second_old.temp-275.15).toFixed(2)}}°</div>
+                <div class="weatherWidgetRow avg-temp">{{(second_old.temp_min-275.15).toFixed(2)}}° / {{(second_old.temp_max-275.15).toFixed(2)}}°</div>
+                <div class="weatherWidgetRow feels-like">Feels Like: {{(second_old.feels_like-275.15).toFixed(2)}}°</div>
                 <div class="weatherWidgetRow city-name">{{second_old.cityName}}</div>
                 <div class="weatherWidgetRow humidity">Humidity: {{second_old.humidity}}%</div>
                 <div class="weatherWidgetRow time">Weather Detail at : {{second_old.time}}%</div>

@@ -7,7 +7,7 @@
     <div *ngIf="isMenuOpen && !device">
         <mat-icon (click)="toggle()" id="toolbar-menu">menu </mat-icon>
     </div>
-    <span id="my-app">my App</span>
+    <span id="my-app">Weather Vision</span>
     <button *ngIf="!device" class="dark-mode-toggle">
         <mat-slide-toggle matTooltip="{{theme }}" (click)="switchTheme()">{{theme === "light-theme" ? "Dark" : "
             Light" }}</mat-slide-toggle>
