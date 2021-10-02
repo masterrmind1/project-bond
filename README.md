@@ -1,4 +1,6 @@
 ## Weather Vision (PWA)
+![maya72](https://user-images.githubusercontent.com/85214168/135712518-80037a71-1eb1-4e74-86e3-c1b5364a3013.png)
+
 A flexible responsive web app to check the weather details of current location as well as that of the 
 different areas of all the cities in india,also check pollution status of different areas of diferent cities.
 ### Here is [Live Link](https://project-bond-e6798.web.app) 
@@ -12,7 +14,7 @@ different areas of all the cities in india,also check pollution status of differ
    - Highlights
    - API's
    - Live Link
-    - External Service Dependencies
+    - Some external Dependencies
    -  Important Link
    -  ScreenShot's
    -  installation
@@ -56,7 +58,7 @@ will take you the place where you can have Pollution data of that place in card 
 ## Live Link
 Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
 
-## External Service Dependencies
+## Some external Dependencies
 -OAuth Social Authentication
    OAuth is used to get information from Facebook and Google accounts, that enables users to sign in with their respective credentials:
    1. Google 
@@ -68,7 +70,12 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
 - [ngx-indexed-db](https://www.npmjs.com/package/ngx-indexed-db)
 
  ## installation
-  Install node modules npm i
+ - Install node modules using ` npm i `
+ - Clone the repository using ` git clone <url> `
+ - Cloning to a specific folder using ` git clone <repo> <directory> `
+ - Serve project to local server using ` ng serve `
+
+
 ## screenShots
   ### Light Mode
   
@@ -83,6 +90,14 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
   Desktop  Screent         |  Device Screen
 :-------------------------:|:-------------------------:
 ![dsfjzg](https://user-images.githubusercontent.com/85214168/135260928-80bc17fc-cdb0-4759-8fa5-a4b65cee04f8.png) | ![fgd (1)](https://user-images.githubusercontent.com/85214168/135260998-bf5588b4-9784-4b12-95a9-0365358c8930.png)
+
+### weather Details
+
+  Desktop  Screen          |  Device Screen
+:-------------------------:|:-------------------------:
+![images](https://user-images.githubusercontent.com/85214168/135712715-934df2bb-c18e-4f4d-b252-4331a2dfb241.jpeg) | ![21](https://user-images.githubusercontent.com/85214168/135712719-46567537-2902-4f3a-aa78-48af6edfcc2e.png)
+
+
 
 ## Ready to use with following libraries
   - flex-layout 12.0.0-beta.34
