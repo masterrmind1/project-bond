@@ -71,9 +71,9 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
 - [ngx-indexed-db](https://www.npmjs.com/package/ngx-indexed-db)
 
  ## installation
- - Install node modules using ` npm i `
  - Clone the repository using ` git clone <url> `
- - Cloning to a specific folder using ` git clone <repo> <directory> `
+ - enter in folder ` cd <name of folder> `
+ -  - Install node modules using ` npm i `
  - Serve project to local server using ` ng serve `
 
 
