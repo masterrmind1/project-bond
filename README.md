@@ -45,7 +45,8 @@ will take you the place where you can have Pollution data of that place in card 
 - Service Worker
     This project is built with Angular's Service-Worker:
 
-        - Service-Workers only work in a production build, so to test, use 'ng build --prod' and run it on a HTTPS server. Example on firebase.
+        - Service-Workers only work in a production build, so to test, use 'ng build --prod' and run it on a HTTPS server. 
+        - Example on firebase.
         - Manifest created for app to be installable + icons
         - Using SwUpdate service to show promt when app is opened and new version is available on server
         - Static files are cached, meaning the app works in offline mode
