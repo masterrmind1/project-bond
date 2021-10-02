@@ -77,7 +77,7 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
  - Serve project to local server using ` ng serve `
 
 
-## screenShots
+## ScreenShots
   ### Light Mode
   
   Desktop  Screen          |  Device Screen
@@ -92,7 +92,7 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
 :-------------------------:|:-------------------------:
 ![dsfjzg](https://user-images.githubusercontent.com/85214168/135260928-80bc17fc-cdb0-4759-8fa5-a4b65cee04f8.png) | ![fgd (1)](https://user-images.githubusercontent.com/85214168/135260998-bf5588b4-9784-4b12-95a9-0365358c8930.png)
 
-### weather Details
+### Weather Details
 
   Desktop  Screen          |  Device Screen
 :-------------------------:|:-------------------------:
