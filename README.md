@@ -13,11 +13,8 @@ different areas of all the cities in india,also check pollution status of differ
    -  How to handle locally
    - Highlights
    - API's
-   - Live Link
-    - Some external Dependencies
-   -  Important Link
    -  ScreenShot's
-   -  installation
+   -  Installation
    - Architecture
 
 
@@ -44,6 +41,7 @@ will take you the place where you can have Pollution data of that place in card 
 - Dark Mode
 - Support one language -English
 - Use NGX Index Database
+- Firebase Authentication
 - Service Worker
     This project is built with Angular's Service-Worker:
 
@@ -56,19 +54,8 @@ will take you the place where you can have Pollution data of that place in card 
   - [API for weather detail's for perticular city](https://api.openweathermap.org/data/2.5/weather?q=mumbai&appid=9ce2eb4084172fcd1a624bcf954f8222)
   - [API for Pollution detail's](https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000014603f9ebbec94dfd47badb0359240ce4&format=json&offset=0&limit=3734)
   - [API for current location weather detail's](https://api.openweathermap.org/data/2.5/onecall?lat=19.7514798&lon=75.7139&appid=9ce2eb4084172fcd1a624bcf954f8222)
-## Live Link
-Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
 
-## Some external Dependencies
--OAuth Social Authentication
-   OAuth is used to get information from Facebook and Google accounts, that enables users to sign in with their respective credentials:
-   1. Google 
-   2. Facebook 
-   3. sign in with Email and Password
-## Important Links
-- [ OpenWeatherMap](https://openweathermap.org/) 
-- [firebase](firebase.com)
-- [ngx-indexed-db](https://www.npmjs.com/package/ngx-indexed-db)
+
 
  ## installation
  - Clone the repository using ` git clone <url> `
@@ -99,9 +86,4 @@ Deployment from the master branch - [myApp](https://project-bond-e6798.web.app)
 ![images](https://user-images.githubusercontent.com/85214168/135712715-934df2bb-c18e-4f4d-b252-4331a2dfb241.jpeg) | ![21](https://user-images.githubusercontent.com/85214168/135712719-46567537-2902-4f3a-aa78-48af6edfcc2e.png)
 
 
-
-## Ready to use with following libraries
-  - flex-layout 12.0.0-beta.34
-  - Angular material 12.2.0
-  - ngx-indexed-db 6.1.2
 
