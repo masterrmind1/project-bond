@@ -67,7 +67,13 @@ sendAreaName(){
 }
 
 sendCitiesFromTable(){
- return this.dbService.getAll('cities');
+  if(navigator.onLine){
+    return  this.db.list('cityData').valueChanges();
+
+  }else{
+    return this.dbService.getAll('cities')
+
+  }
 
 }
 knowIfDevice(isDevice){

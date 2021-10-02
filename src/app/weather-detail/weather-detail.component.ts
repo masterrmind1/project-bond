@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./weather-detail.component.css']
 })
 export class WeatherDetailComponent implements OnInit {
-  WeatherData:any;
+  WeatherData:any;weatherDetailShow=true;
   allCitiesFromTable = []; index; current: weather_detail; old: weather_detail;
   second_old: weather_detail; lat; long;
   constructor(private dbService: NgxIndexedDBService, private spinner: NgxSpinnerService,
@@ -44,6 +44,8 @@ export class WeatherDetailComponent implements OnInit {
       fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityData[i].cityName + '&appid=9ce2eb4084172fcd1a624bcf954f8222')
         .then(response => response.json())
         .then(Totaldata => {
+
+          console.log(Totaldata)
           var time = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
           this.dbService.getAllByIndex('citiesData', 'cityID', IDBKeyRange.only(i)).subscribe((weatherDetail) => {
             if (weatherDetail.length < 3) {
@@ -167,7 +169,7 @@ export class WeatherDetailComponent implements OnInit {
   setWeatherData(i, data) {
     this.spinner.show();
 this.WeatherData=data
-console.log(this.WeatherData);
+console.log(this.WeatherData.main.temp);
 
  let sunsetTime = new Date(this.WeatherData.sys.sunset * 1000);
  this.WeatherData.sunset_time = sunsetTime.toLocaleTimeString();
@@ -175,15 +177,38 @@ console.log(this.WeatherData);
  let currentDate = new Date();
  console.log(currentDate)
  this.WeatherData.isDay = (currentDate.getTime() < sunsetTime.getTime());
+//   if(navigator.onLine){
+//     this.current.temp=this.WeatherData.main.temp
+//     this.current.temp_min=this.WeatherData.main.temp_min
+//     this.current.temp_max=this.WeatherData.main.temp_max
+// this.current.feels_like=this.WeatherData.main.feels_like
+// this.current.cityName=this.WeatherData.name
+// this.current.humidity=this.WeatherData.main.humidity
+// this.current.time=moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
+//  }else{
+//   this.dbService.getAllByIndex('citiesData', 'cityID', i).subscribe((weatherDetail) => {
+//     let a: any = weatherDetail;
+//     this.current = weatherDetail[0];
+//     this.old = weatherDetail[1];
+//     this.second_old = weatherDetail[2];
+//     this.spinner.hide();
+
+//   });
+
+ //}    
+ 
+
 
     this.dbService.getAllByIndex('citiesData', 'cityID', i).subscribe((weatherDetail) => {
       let a: any = weatherDetail;
       this.current = weatherDetail[0];
       this.old = weatherDetail[1];
       this.second_old = weatherDetail[2];
+      this.weatherDetailShow=false;
       this.spinner.hide();
 
     });
+ 
   }
 
 

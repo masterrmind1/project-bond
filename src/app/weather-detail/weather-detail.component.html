@@ -1,6 +1,6 @@
 <body>
-
-    <div style="margin-top: 3%;   margin-bottom: 40%; ">
+    <h2 *ngIf="weatherDetailShow">Please Refresh The Page</h2>
+    <div *ngIf="!weatherDetailShow" style="margin-top: 3%;   margin-bottom: 40%; ">
         <mat-accordion *ngIf="current && current.cityName.length > 0">
             <mat-expansion-panel [expanded]=true>
                 <mat-expansion-panel-header>

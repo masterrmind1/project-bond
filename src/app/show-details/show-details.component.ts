@@ -18,6 +18,8 @@ export class ShowDetailsComponent implements OnInit, OnChanges{
     private dbService: NgxIndexedDBService, private getData: GetDataService,private spinner: NgxSpinnerService,
     private database: AngularFireDatabase, private route: Router) {
       this.spinner.show();
+      
+console.log(navigator.onLine)
     // this.dbService.getAll('cities').subscribe((cities) => {
     //   this.observer=new Observable(Subscriber=>{
     //     setTimeout(() => {
